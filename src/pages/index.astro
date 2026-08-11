@@ -1,17 +1,1704 @@
 ---
-
+import Header from "../components/Header.astro";
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <meta
+      name="description"
+      content="Technical portfolio of Felipe Sales de Oliveira - DevOps Engineer and Site Reliability Engineer"
+    />
+
+    <title>Felipe Sales | DevOps & SRE</title>
+  </head>
+
+  <body>
+    <Header />
+
+    <main class="container">
+
+      <!-- =========================
+           HERO
+      ========================== -->
+
+      <section id="home" class="hero">
+        <div class="terminal-window">
+
+          <div class="terminal-header">
+            <div class="traffic-lights">
+              <span class="red"></span>
+              <span class="yellow"></span>
+              <span class="green"></span>
+            </div>
+
+            <span class="terminal-title">
+              felipe@sre:~
+            </span>
+          </div>
+
+          <div class="terminal-content">
+
+            <p class="command">
+              <span>$</span> whoami
+            </p>
+
+            <h1>
+              Felipe Sales de Oliveira
+            </h1>
+
+            <p class="command">
+              <span>$</span> cat role.txt
+            </p>
+
+            <p class="role">
+              DevOps Engineer
+              <strong>|</strong>
+              Site Reliability Engineer
+            </p>
+
+            <p class="command">
+              <span>$</span> cat bio.txt
+            </p>
+
+            <p class="bio">
+              I design, automate, and operate cloud infrastructure with a focus on{" "}
+              <strong>reliability</strong>,{" "}
+              <strong>observability</strong>,{" "}
+              <strong>scalability</strong>, and{" "}
+              <strong>continuous improvement</strong>.
+            </p>
+
+            <p class="command connect">
+              <span>$</span> ./connect.sh
+            </p>
+
+            <div class="links">
+
+              <a
+                href="https://www.linkedin.com/in/felipesalesdeoliveira/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn
+              </a>
+
+              <a
+                href="https://github.com/felipesalesdeoliveira"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub
+              </a>
+
+              <a href="mailto:fesales.oliveira@gmail.com">
+                Email
+              </a>
+
+            </div>
+
+            <div class="consulting-link">
+
+              <span class="consulting-label">
+                $ cat consulting.txt
+              </span>
+
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="consulting-button"
+              >
+                Visit FSO Cloud Consulting
+                <span>→</span>
+              </a>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      <!-- =========================
+           CORE SKILLS
+      ========================== -->
+
+      <section class="section">
+
+        <div class="section-title">
+          <span>#</span>
+          <h2>Core Skills</h2>
+        </div>
+
+        <div class="skills-grid">
+
+          <article class="skill-card">
+            <h3>DevOps Engineering</h3>
+          </article>
+
+          <article class="skill-card">
+            <h3>Site Reliability Engineering</h3>
+          </article>
+
+          <article class="skill-card">
+            <h3>Cloud Computing</h3>
+          </article>
+
+          <article class="skill-card">
+            <h3>Kubernetes & Containers</h3>
+          </article>
+
+          <article class="skill-card">
+            <h3>Infrastructure as Code</h3>
+          </article>
+
+          <article class="skill-card">
+            <h3>CI/CD & GitOps</h3>
+          </article>
+
+          <article class="skill-card">
+            <h3>Observability</h3>
+          </article>
+
+          <article class="skill-card">
+            <h3>Automation</h3>
+          </article>
+
+          <article class="skill-card">
+            <h3>Networking</h3>
+          </article>
+
+        </div>
+      </section>
+
+
+      <!-- =========================
+           TECH STACK
+      ========================== -->
+
+      <section class="section">
+
+        <div class="section-title">
+          <span>#</span>
+          <h2>Tech Stack</h2>
+        </div>
+
+        <div class="tech-groups">
+
+          <!-- CLOUD -->
+
+          <div class="tech-group">
+
+            <h3 class="tech-group-title">
+              Cloud
+            </h3>
+
+            <div class="tech-grid">
+
+              <article class="tech-card">
+                <img
+                  src="/icons/aws.svg"
+                  alt="AWS"
+                  class="aws-icon"
+                />
+                <span>AWS</span>
+              </article>
+
+              <article class="tech-card">
+                <img
+                  src="/icons/azure.svg"
+                  alt="Microsoft Azure"
+                />
+                <span>Azure</span>
+              </article>
+
+              <article class="tech-card">
+                <img
+                  src="/icons/gcp.svg"
+                  alt="Google Cloud"
+                />
+                <span>Google Cloud</span>
+              </article>
+
+              <article class="tech-card">
+                <img
+                  src="/icons/oci.svg"
+                  alt="Oracle Cloud Infrastructure"
+                />
+                <span>OCI</span>
+              </article>
+
+            </div>
+          </div>
+
+
+          <!-- CONTAINERS & PLATFORM -->
+
+          <div class="tech-group">
+
+            <h3 class="tech-group-title">
+              Containers & Platform
+            </h3>
+
+            <div class="tech-grid">
+
+              <article class="tech-card">
+                <img
+                  src="/icons/kubernetes.svg"
+                  alt="Kubernetes"
+                />
+                <span>Kubernetes</span>
+              </article>
+
+              <article class="tech-card">
+                <img
+                  src="/icons/docker.svg"
+                  alt="Docker"
+                />
+                <span>Docker</span>
+              </article>
+
+              <article class="tech-card">
+                <img
+                  src="/icons/helm.svg"
+                  alt="Helm"
+                />
+                <span>Helm</span>
+              </article>
+
+              <article class="tech-card">
+                <img
+                  src="/icons/argocd.svg"
+                  alt="Argo CD"
+                />
+                <span>Argo CD</span>
+              </article>
+
+            </div>
+          </div>
+
+
+          <!-- INFRASTRUCTURE & AUTOMATION -->
+
+          <div class="tech-group">
+
+            <h3 class="tech-group-title">
+              Infrastructure & Automation
+            </h3>
+
+            <div class="tech-grid">
+
+              <article class="tech-card">
+                <img
+                  src="/icons/terraform.svg"
+                  alt="Terraform"
+                />
+                <span>Terraform</span>
+              </article>
+
+              <article class="tech-card">
+                <img
+                  src="/icons/ansible.svg"
+                  alt="Ansible"
+                />
+                <span>Ansible</span>
+              </article>
+
+              <article class="tech-card">
+                <img
+                  src="/icons/linux.svg"
+                  alt="Linux"
+                />
+                <span>Linux</span>
+              </article>
+
+              <article class="tech-card">
+                <img
+                  src="/icons/bash.svg"
+                  alt="Bash"
+                />
+                <span>Bash</span>
+              </article>
+
+            </div>
+          </div>
+
+
+          <!-- CI/CD -->
+
+          <div class="tech-group">
+
+            <h3 class="tech-group-title">
+              CI/CD
+            </h3>
+
+            <div class="tech-grid">
+
+              <article class="tech-card">
+                <img
+                  src="/icons/githubactions.svg"
+                  alt="GitHub Actions"
+                />
+                <span>GitHub Actions</span>
+              </article>
+
+              <article class="tech-card">
+                <img
+                  src="/icons/azuredevops.svg"
+                  alt="Azure DevOps"
+                />
+                <span>Azure DevOps</span>
+              </article>
+
+            </div>
+          </div>
+
+
+          <!-- OBSERVABILITY -->
+
+          <div class="tech-group">
+
+            <h3 class="tech-group-title">
+              Observability
+            </h3>
+
+            <div class="tech-grid">
+
+              <article class="tech-card">
+                <img
+                  src="/icons/prometheus.svg"
+                  alt="Prometheus"
+                />
+                <span>Prometheus</span>
+              </article>
+
+              <article class="tech-card">
+                <img
+                  src="/icons/grafana.svg"
+                  alt="Grafana"
+                />
+                <span>Grafana</span>
+              </article>
+
+              <article class="tech-card">
+                <img
+                  src="/icons/elastic.svg"
+                  alt="Elastic"
+                />
+                <span>Elastic</span>
+              </article>
+
+              <article class="tech-card">
+                <img
+                  src="/icons/opensearch.svg"
+                  alt="OpenSearch"
+                />
+                <span>OpenSearch</span>
+              </article>
+
+              <article class="tech-card">
+                <img
+                  src="/icons/opentelemetry.svg"
+                  alt="OpenTelemetry"
+                />
+                <span>OpenTelemetry</span>
+              </article>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- =========================
+           CERTIFICATIONS
+      ========================== -->
+
+      <section class="section">
+
+        <div class="section-title">
+          <span>#</span>
+          <h2>Certifications</h2>
+        </div>
+
+        <div class="certifications-grid">
+
+          <!-- AWS -->
+
+          <article class="cert-card">
+
+            <div class="cert-icon">
+              <img
+                src="/icons/aws.svg"
+                alt="AWS"
+              />
+            </div>
+
+            <div class="cert-content">
+
+              <span class="cert-issuer">
+                Amazon Web Services
+              </span>
+
+              <h3>
+                AWS Certified Cloud Practitioner
+              </h3>
+
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View credential →
+              </a>
+
+            </div>
+          </article>
+
+
+          <!-- LINUX -->
+
+          <article class="cert-card">
+
+            <div class="cert-icon">
+              <img
+                src="/icons/linux.svg"
+                alt="Linux"
+              />
+            </div>
+
+            <div class="cert-content">
+
+              <span class="cert-issuer">
+                Linux
+              </span>
+
+              <h3>
+                Linux Essentials
+              </h3>
+
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View credential →
+              </a>
+
+            </div>
+          </article>
+
+
+          <!-- KUBERNETES -->
+
+          <article class="cert-card">
+
+            <div class="cert-icon">
+              <img
+                src="/icons/kubernetes.svg"
+                alt="Kubernetes"
+              />
+            </div>
+
+            <div class="cert-content">
+
+              <span class="cert-issuer">
+                Kubernetes
+              </span>
+
+              <h3>
+                Kubernetes Essentials
+              </h3>
+
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View credential →
+              </a>
+
+            </div>
+          </article>
+
+
+          <!-- DATABRICKS -->
+
+          <article class="cert-card">
+
+            <div class="cert-icon">
+              <img
+                src="/icons/databricks.svg"
+                alt="Databricks"
+              />
+            </div>
+
+            <div class="cert-content">
+
+              <span class="cert-issuer">
+                Databricks
+              </span>
+
+              <h3>
+                Databricks Fundamentals
+              </h3>
+
+              <a
+                href="https://credentials.databricks.com/7d4846ec-1baa-41c8-a588-252185d672ae#acc.BC5ZtD3o"
+                target="_blank"
+                rel="noopener noreferrer"
+               >
+                View credential →
+              </a>
+
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+
+      <!-- =========================
+           CONTACT
+      ========================== -->
+
+      <section
+        id="contact"
+        class="section"
+      >
+
+        <div class="section-title">
+          <span>#</span>
+          <h2>Contact</h2>
+        </div>
+
+        <div class="contact-block">
+
+          <p class="contact-command">
+            $ ./connect.sh
+          </p>
+
+          <p class="contact-text">
+            Feel free to reach out for opportunities, collaborations,
+            or conversations about DevOps, SRE, Cloud and Observability.
+          </p>
+
+          <p class="contact-email">
+            fesales.oliveira@gmail.com
+          </p>
+
+          <div class="contact-links">
+
+            <a
+              href="https://www.linkedin.com/in/felipesalesdeoliveira/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </a>
+
+            <a
+              href="https://github.com/felipesalesdeoliveira"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </a>
+
+            <a href="mailto:fesales.oliveira@gmail.com">
+              Email
+            </a>
+
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+  </body>
 </html>
+
+
+<style>
+
+  /* =========================
+     GLOBAL
+  ========================== */
+
+  :global(*) {
+    box-sizing: border-box;
+  }
+
+  :global(html) {
+    scroll-behavior: smooth;
+    background: #080b0c;
+  }
+
+  :global(body) {
+    margin: 0;
+    min-height: 100vh;
+
+    background:
+      radial-gradient(
+        circle at top right,
+        rgba(54, 211, 153, 0.045),
+        transparent 32%
+      ),
+      #080b0c;
+
+    color: #e5e7e8;
+
+    font-family:
+      "SFMono-Regular",
+      Consolas,
+      "Liberation Mono",
+      Menlo,
+      monospace;
+  }
+
+
+  /* =========================
+     CONTAINER
+  ========================== */
+
+  .container {
+    width: min(1100px, calc(100% - 48px));
+
+    margin: 0 auto;
+  }
+
+
+  /* =========================
+     HERO
+  ========================== */
+
+  .hero {
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 130px 0 90px;
+  }
+
+
+  /* =========================
+     TERMINAL WINDOW
+  ========================== */
+
+  .terminal-window {
+    width: 100%;
+    max-width: 920px;
+
+    margin: 0 auto;
+
+    overflow: hidden;
+
+    border: 1px solid #293332;
+    border-radius: 14px;
+
+    background: #090d0f;
+
+    box-shadow:
+      0 25px 70px rgba(0, 0, 0, 0.45),
+      0 0 50px rgba(54, 211, 153, 0.035);
+  }
+
+  .terminal-header {
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 0 22px;
+
+    border-bottom: 1px solid #293332;
+
+    background: #171d20;
+  }
+
+  .traffic-lights {
+    display: flex;
+
+    gap: 9px;
+  }
+
+  .traffic-lights span {
+    width: 13px;
+    height: 13px;
+
+    display: block;
+
+    border-radius: 50%;
+  }
+
+  .red {
+    background: #ff5f57;
+  }
+
+  .yellow {
+    background: #febc2e;
+  }
+
+  .green {
+    background: #28c840;
+  }
+
+  .terminal-title {
+    margin-left: 25px;
+
+    color: #7f898c;
+
+    font-size: 14px;
+  }
+
+  .terminal-content {
+    padding: 42px 42px 48px;
+  }
+
+  .command {
+    margin: 0 0 17px;
+
+    color: #8a9498;
+
+    font-size: 16px;
+  }
+
+  .command span {
+    margin-right: 14px;
+
+    color: #36d399;
+  }
+
+
+  /* =========================
+     NAME
+  ========================== */
+
+  h1 {
+    margin: 0 0 40px;
+
+    color: #36d399;
+
+    font-size: clamp(38px, 6vw, 62px);
+
+    line-height: 1;
+
+    letter-spacing: -2px;
+  }
+
+
+  /* =========================
+     ROLE
+  ========================== */
+
+  .role {
+    margin: 0 0 38px;
+
+    color: #5ca8ff;
+
+    font-size: clamp(20px, 3vw, 28px);
+  }
+
+  .role strong {
+    color: #667174;
+
+    font-weight: normal;
+  }
+
+
+  /* =========================
+     BIO
+  ========================== */
+
+  .bio {
+    max-width: 760px;
+
+    margin: 0;
+
+    color: #c6cbcd;
+
+    font-family:
+      Inter,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
+
+    font-size: clamp(17px, 2vw, 20px);
+
+    line-height: 1.7;
+  }
+
+  .bio strong {
+    color: #36d399;
+  }
+
+
+  /* =========================
+     HERO LINKS
+  ========================== */
+
+  .connect {
+    margin-top: 42px;
+  }
+
+  .links {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 14px;
+  }
+
+  .links a {
+    padding: 11px 18px;
+
+    border: 1px solid #303a3d;
+    border-radius: 7px;
+
+    background: #12181b;
+
+    color: #c9cfd1;
+
+    text-decoration: none;
+
+    transition:
+      color 0.2s ease,
+      border-color 0.2s ease,
+      transform 0.2s ease,
+      background 0.2s ease;
+  }
+
+  .links a:hover {
+    transform: translateY(-2px);
+
+    border-color: #36d399;
+
+    background: #101b18;
+
+    color: #36d399;
+  }
+
+
+  /* =========================
+     CONSULTING
+  ========================== */
+
+  .consulting-link {
+    margin-top: 26px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 12px;
+  }
+
+  .consulting-label {
+    color: #8a9498;
+
+    font-size: 13px;
+  }
+
+  .consulting-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 11px 16px;
+
+    border: 1px solid rgba(54, 211, 153, 0.45);
+    border-radius: 7px;
+
+    background: rgba(54, 211, 153, 0.06);
+
+    color: #36d399;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition:
+      background 0.2s ease,
+      border-color 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .consulting-button span {
+    transition: transform 0.2s ease;
+  }
+
+  .consulting-button:hover {
+    transform: translateY(-2px);
+
+    border-color: #36d399;
+
+    background: rgba(54, 211, 153, 0.11);
+  }
+
+  .consulting-button:hover span {
+    transform: translateX(3px);
+  }
+
+
+  /* =========================
+     SECTIONS
+  ========================== */
+
+  .section {
+    padding: 70px 0;
+  }
+
+  .section-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid #252d30;
+  }
+
+  .section-title span {
+    color: #36d399;
+
+    font-size: 30px;
+    font-weight: 700;
+  }
+
+  .section-title h2 {
+    margin: 0;
+
+    color: #8d969a;
+
+    font-size: clamp(26px, 3vw, 34px);
+
+    letter-spacing: -1px;
+  }
+
+
+  /* =========================
+     CORE SKILLS
+  ========================== */
+
+  .skills-grid {
+    display: grid;
+
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap: 16px;
+
+    margin-top: 32px;
+  }
+
+  .skill-card {
+    min-height: 105px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    border: 1px solid #283235;
+    border-radius: 9px;
+
+    background: #0d1214;
+
+    text-align: center;
+
+    transition:
+      transform 0.2s ease,
+      border-color 0.2s ease,
+      background 0.2s ease;
+  }
+
+  .skill-card:hover {
+    transform: translateY(-3px);
+
+    border-color: #36d399;
+
+    background: #0f1716;
+  }
+
+  .skill-card h3 {
+    margin: 0;
+
+    color: #d9ddde;
+
+    font-family:
+      Inter,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
+
+    font-size: 17px;
+    font-weight: 500;
+
+    line-height: 1.4;
+  }
+
+
+  /* =========================
+     TECH STACK
+  ========================== */
+
+  .tech-groups {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 34px;
+
+    margin-top: 30px;
+  }
+
+  .tech-group-title {
+    margin: 0 0 14px;
+
+    color: #7f898c;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+  }
+
+  .tech-grid {
+    display: grid;
+
+    grid-template-columns:
+      repeat(4, minmax(0, 1fr));
+
+    gap: 12px;
+  }
+
+  .tech-card {
+    min-height: 105px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    padding: 16px 12px;
+
+    border: 1px solid #283235;
+    border-radius: 9px;
+
+    background: #0d1214;
+
+    transition:
+      transform 0.2s ease,
+      border-color 0.2s ease,
+      background 0.2s ease;
+  }
+
+  .tech-card:hover {
+    transform: translateY(-3px);
+
+    border-color: #36d399;
+
+    background: #0f1716;
+  }
+
+  .tech-card img {
+    width: 34px;
+    height: 34px;
+
+    object-fit: contain;
+
+    opacity: 0.9;
+
+    .tech-card img.aws-icon {
+  width: 44px;
+  height: 44px;
+}
+
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .tech-card:hover img {
+    opacity: 1;
+
+    transform: scale(1.08);
+  }
+
+  .tech-card span {
+    color: #cfd4d5;
+
+    font-family:
+      Inter,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    text-align: center;
+  }
+
+
+  /* =========================
+     CERTIFICATIONS
+  ========================== */
+
+  .certifications-grid {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 14px;
+
+    margin-top: 28px;
+  }
+
+  .cert-card {
+    min-height: 145px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 22px;
+
+    border: 1px solid #283235;
+    border-radius: 9px;
+
+    background: #0d1214;
+
+    transition:
+      transform 0.2s ease,
+      border-color 0.2s ease,
+      background 0.2s ease;
+  }
+
+  .cert-card:hover {
+    transform: translateY(-3px);
+
+    border-color: #36d399;
+
+    background: #0f1716;
+  }
+
+  .cert-icon {
+    width: 56px;
+    height: 56px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 1px solid #293437;
+    border-radius: 10px;
+
+    background: #111719;
+  }
+
+  .cert-icon img {
+    width: 32px;
+    height: 32px;
+
+    object-fit: contain;
+  }
+
+  .cert-content {
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .cert-issuer {
+    margin-bottom: 6px;
+
+    color: #667174;
+
+    font-size: 11px;
+    font-weight: 500;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.6px;
+  }
+
+  .cert-content h3 {
+    margin: 0 0 12px;
+
+    color: #d9ddde;
+
+    font-family:
+      Inter,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    line-height: 1.4;
+  }
+
+  .cert-content a {
+    color: #36d399;
+
+    font-size: 12px;
+
+    text-decoration: none;
+
+    transition: opacity 0.2s ease;
+  }
+
+  .cert-content a:hover {
+    opacity: 0.7;
+  }
+
+
+  /* =========================
+     CONTACT
+  ========================== */
+
+  .contact-block {
+    margin-top: 28px;
+
+    padding: 26px;
+
+    border: 1px solid #283235;
+    border-radius: 10px;
+
+    background: #0d1214;
+  }
+
+  .contact-command {
+    margin: 0 0 18px;
+
+    color: #36d399;
+
+    font-size: 15px;
+  }
+
+  .contact-text {
+    max-width: 680px;
+
+    margin: 0;
+
+    color: #aeb5b7;
+
+    font-family:
+      Inter,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+  }
+
+  .contact-email {
+    margin: 18px 0 0;
+
+    color: #36d399;
+
+    font-size: 14px;
+  }
+
+  .contact-links {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 26px;
+  }
+
+  .contact-links a {
+    min-width: 110px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 11px 18px;
+
+    border: 1px solid #303a3d;
+    border-radius: 7px;
+
+    background: #12181b;
+
+    color: #c9cfd1;
+
+    font-size: 13px;
+
+    text-decoration: none;
+
+    transition:
+      color 0.2s ease,
+      border-color 0.2s ease,
+      background 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .contact-links a:hover {
+    transform: translateY(-2px);
+
+    border-color: #36d399;
+
+    background: #101b18;
+
+    color: #36d399;
+  }
+
+
+  /* =========================
+     TABLET
+  ========================== */
+
+  @media (max-width: 900px) {
+
+    .skills-grid {
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+    }
+
+    .tech-grid {
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+    }
+
+  }
+
+
+  /* =========================
+     MOBILE
+  ========================== */
+
+  @media (max-width: 700px) {
+
+    .container {
+      width: min(100% - 32px, 1100px);
+    }
+
+    .hero {
+      min-height: auto;
+
+      padding: 120px 0 70px;
+    }
+
+    .terminal-content {
+      padding: 32px 24px 36px;
+    }
+
+    .terminal-header {
+      padding: 0 18px;
+    }
+
+    .terminal-title {
+      margin-left: 18px;
+    }
+
+    h1 {
+      margin-bottom: 32px;
+    }
+
+    .role {
+      margin-bottom: 32px;
+    }
+
+    .section {
+      padding: 55px 0;
+    }
+
+    .section-title {
+      gap: 12px;
+    }
+
+    .section-title span {
+      font-size: 25px;
+    }
+
+
+    /* CERTIFICATIONS */
+
+    .certifications-grid {
+      grid-template-columns: 1fr;
+
+      gap: 12px;
+    }
+
+    .cert-card {
+      min-height: auto;
+
+      padding: 18px;
+
+      gap: 15px;
+    }
+
+    .cert-icon {
+      width: 48px;
+      height: 48px;
+    }
+
+    .cert-icon img {
+      width: 27px;
+      height: 27px;
+    }
+
+    .cert-content h3 {
+      font-size: 15px;
+
+      line-height: 1.35;
+    }
+
+    .cert-issuer {
+      font-size: 10px;
+    }
+
+    .cert-content a {
+      font-size: 11px;
+    }
+
+  }
+
+
+  /* =========================
+     SMALL MOBILE
+  ========================== */
+
+  @media (max-width: 600px) {
+
+    /* HERO */
+
+    .terminal-window {
+      border-radius: 10px;
+    }
+
+    .terminal-header {
+      height: 52px;
+    }
+
+    .traffic-lights span {
+      width: 11px;
+      height: 11px;
+    }
+
+    .terminal-title {
+      font-size: 12px;
+    }
+
+    .terminal-content {
+      padding: 28px 24px 40px;
+    }
+
+    .command {
+      margin-bottom: 14px;
+
+      font-size: 14px;
+    }
+
+    .command span {
+      margin-right: 10px;
+    }
+
+    h1 {
+      margin-bottom: 28px;
+
+      font-size: 32px;
+
+      line-height: 1.08;
+
+      letter-spacing: -1.4px;
+    }
+
+    .role {
+      margin-bottom: 30px;
+
+      font-size: 20px;
+
+      line-height: 1.35;
+    }
+
+    .bio {
+      font-size: 16px;
+
+      line-height: 1.65;
+    }
+
+    .connect {
+      margin-top: 32px;
+    }
+
+    .links {
+      gap: 10px;
+    }
+
+    .links a {
+      padding: 10px 14px;
+
+      font-size: 12px;
+    }
+
+
+    /* CONSULTING */
+
+    .consulting-link {
+      margin-top: 22px;
+    }
+
+    .consulting-label {
+      font-size: 12px;
+    }
+
+    .consulting-button {
+      padding: 10px 14px;
+
+      font-size: 11px;
+    }
+
+
+    /* CORE SKILLS */
+
+    .skills-grid {
+      grid-template-columns: 1fr;
+
+      gap: 10px;
+    }
+
+    .skill-card {
+      min-height: 76px;
+
+      padding: 16px 14px;
+    }
+
+    .skill-card h3 {
+      font-size: 15px;
+
+      line-height: 1.3;
+    }
+
+
+    /* TECH STACK */
+
+    .tech-groups {
+      gap: 28px;
+
+      margin-top: 26px;
+    }
+
+    .tech-group-title {
+      margin-bottom: 11px;
+
+      font-size: 11px;
+    }
+
+    .tech-grid {
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 10px;
+    }
+
+    .tech-card {
+      min-height: 88px;
+
+      padding: 12px 10px;
+
+      gap: 8px;
+    }
+
+    .tech-card img {
+      width: 28px;
+      height: 28px;
+    }
+
+    .tech-card img.aws-icon {
+      width: 38px;
+      height: 38px;
+    }
+
+    .tech-card span {
+      font-size: 12px;
+
+      line-height: 1.3;
+    }
+
+
+    /* CONTACT */
+
+    .contact-block {
+      padding: 18px;
+    }
+
+    .contact-text {
+      font-size: 14px;
+
+      line-height: 1.6;
+    }
+
+    .contact-email {
+      font-size: 13px;
+
+      overflow-wrap: anywhere;
+    }
+
+    .contact-links {
+      flex-direction: column;
+
+      gap: 10px;
+    }
+
+    .contact-links a {
+      width: 100%;
+
+      padding: 10px 14px;
+
+      font-size: 12px;
+    }
+
+  }
+
+</style>

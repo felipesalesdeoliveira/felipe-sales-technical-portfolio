@@ -1,0 +1,120 @@
+---
+import Header from "../components/Header.astro";
+
+const {
+  title = "Felipe Sales | DevOps & SRE",
+  description = "Portfolio of Felipe Sales - DevOps Engineer and Site Reliability Engineer"
+} = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <meta
+      name="description"
+      content={description}
+    />
+
+    <title>{title}</title>
+  </head>
+
+  <body>
+    <Header />
+
+    <main class="container">
+      <slot />
+    </main>
+  </body>
+</html>
+
+<style is:global>
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background: #080b0c;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+
+    background:
+      radial-gradient(
+        circle at top right,
+        rgba(54, 211, 153, 0.045),
+        transparent 32%
+      ),
+      #080b0c;
+
+    color: #e5e7e8;
+
+    font-family:
+      "SFMono-Regular",
+      Consolas,
+      "Liberation Mono",
+      Menlo,
+      monospace;
+  }
+
+  .container {
+    width: min(1100px, calc(100% - 48px));
+    margin: 0 auto;
+  }
+
+  .page {
+    min-height: 100vh;
+    padding: 140px 0 100px;
+  }
+
+  .page-command {
+    margin: 0 0 18px;
+
+    color: #36d399;
+
+    font-size: 15px;
+  }
+
+  .page h1 {
+    margin: 0;
+
+    color: #e7ebec;
+
+    font-size: clamp(42px, 6vw, 64px);
+
+    letter-spacing: -2px;
+  }
+
+  .page-description {
+    max-width: 720px;
+
+    margin: 22px 0 0;
+
+    color: #7f898c;
+
+    font-family:
+      Inter,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+  }
+
+  @media (max-width: 700px) {
+    .container {
+      width: min(100% - 32px, 1100px);
+    }
+
+    .page {
+      padding: 120px 0 80px;
+    }
+  }
+</style>

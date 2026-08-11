@@ -1,0 +1,276 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Articles | Felipe Sales"
+  description="Technical articles by Felipe Sales about DevOps, SRE, Cloud, Kubernetes and Observability."
+>
+  <section class="page">
+
+    <p class="page-command">$ ls ~/articles/</p>
+
+    <h1>Articles</h1>
+
+    <p class="page-description">
+      Technical notes and articles about DevOps, Site Reliability Engineering,
+      Kubernetes, Cloud and Observability.
+    </p>
+
+    <div class="articles-grid">
+
+      <!-- ARTICLE 1 -->
+      <article class="article-card">
+
+        <div class="article-meta">
+          <span class="article-category">Kubernetes</span>
+          <span class="article-status">Coming Soon</span>
+        </div>
+
+        <h2>
+          Troubleshooting HTTP 503 in Kubernetes
+        </h2>
+
+        <p class="article-description">
+          A practical guide to investigating HTTP 503 errors across
+          Kubernetes workloads, services, ingress, load balancers and
+          application dependencies.
+        </p>
+
+        <div class="article-tags">
+          <span>Kubernetes</span>
+          <span>Troubleshooting</span>
+          <span>HTTP</span>
+          <span>Networking</span>
+        </div>
+
+      </article>
+
+
+      <!-- ARTICLE 2 -->
+      <article class="article-card">
+
+        <div class="article-meta">
+          <span class="article-category">Observability</span>
+          <span class="article-status">Coming Soon</span>
+        </div>
+
+        <h2>
+          Kubernetes Observability: Metrics, Logs and Traces
+        </h2>
+
+        <p class="article-description">
+          An introduction to the three pillars of observability and how
+          Prometheus, Grafana, Loki and OpenTelemetry can work together
+          in Kubernetes environments.
+        </p>
+
+        <div class="article-tags">
+          <span>Prometheus</span>
+          <span>Grafana</span>
+          <span>Loki</span>
+          <span>OpenTelemetry</span>
+        </div>
+
+      </article>
+
+
+      <!-- ARTICLE 3 -->
+      <article class="article-card">
+
+        <div class="article-meta">
+          <span class="article-category">AWS</span>
+          <span class="article-status">Coming Soon</span>
+        </div>
+
+        <h2>
+          Understanding an Amazon EKS Architecture
+        </h2>
+
+        <p class="article-description">
+          A practical overview of the infrastructure behind Amazon EKS,
+          including VPCs, subnets, load balancers, worker nodes, pods,
+          networking and access flow.
+        </p>
+
+        <div class="article-tags">
+          <span>AWS</span>
+          <span>EKS</span>
+          <span>Kubernetes</span>
+          <span>Networking</span>
+        </div>
+
+      </article>
+
+    </div>
+
+  </section>
+</BaseLayout>
+
+
+<style>
+
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+
+    margin-top: 70px;
+  }
+
+  .article-card {
+    min-height: 300px;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 28px;
+
+    border: 1px solid #283235;
+    border-radius: 10px;
+
+    background: #0d1214;
+
+    transition:
+      transform 0.2s ease,
+      border-color 0.2s ease,
+      background 0.2s ease;
+  }
+
+  .article-card:hover {
+    transform: translateY(-3px);
+
+    border-color: #36d399;
+
+    background: #0f1716;
+  }
+
+  .article-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 16px;
+
+    margin-bottom: 22px;
+  }
+
+  .article-category {
+    color: #36d399;
+
+    font-size: 11px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.7px;
+  }
+
+  .article-status {
+    padding: 5px 9px;
+
+    border: 1px solid #293437;
+    border-radius: 6px;
+
+    background: #111719;
+
+    color: #7f898c;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.6px;
+  }
+
+  .article-card h2 {
+    margin: 0;
+
+    color: #e0e4e5;
+
+    font-family:
+      Inter,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
+
+    font-size: 22px;
+
+    font-weight: 600;
+
+    line-height: 1.35;
+  }
+
+  .article-description {
+    margin: 18px 0 0;
+
+    color: #9ba4a7;
+
+    font-family:
+      Inter,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+  }
+
+  .article-tags {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: auto;
+
+    padding-top: 24px;
+  }
+
+  .article-tags span {
+    padding: 6px 10px;
+
+    border: 1px solid #293437;
+    border-radius: 6px;
+
+    background: #111719;
+
+    color: #7f898c;
+
+    font-size: 11px;
+  }
+
+  @media (max-width: 900px) {
+
+    .articles-grid {
+      grid-template-columns: 1fr;
+    }
+
+  }
+
+  @media (max-width: 700px) {
+
+    .articles-grid {
+      margin-top: 50px;
+    }
+
+    .article-card {
+      min-height: auto;
+
+      padding: 22px;
+    }
+
+    .article-meta {
+      align-items: flex-start;
+    }
+
+    .article-card h2 {
+      font-size: 20px;
+    }
+
+  }
+
+</style>

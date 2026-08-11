@@ -1,0 +1,538 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Projects | Felipe Sales"
+  description="Technical projects developed by Felipe Sales involving DevOps, SRE, Cloud, Kubernetes, GitOps and Observability."
+>
+  <section class="page">
+
+    <p class="page-command">$ ls ~/projects/</p>
+
+    <h1>Projects</h1>
+
+    <p class="page-description">
+      Selected technical projects focused on cloud infrastructure,
+      Kubernetes, observability, Infrastructure as Code and GitOps.
+    </p>
+
+    <div class="projects-grid">
+
+      <!-- PROJECT 1 -->
+      <article class="project-card">
+
+        <div class="project-number">
+          01
+        </div>
+
+        <div class="project-content">
+
+          <div class="project-header">
+            <div>
+              <span class="project-type">
+                Observability
+              </span>
+
+              <h2>
+                Kubernetes 360° Observability
+              </h2>
+            </div>
+
+            <span class="project-status">
+              Lab
+            </span>
+          </div>
+
+          <p class="project-description">
+            Implementation of a complete observability stack for Kubernetes,
+            combining metrics, logs and distributed traces to improve service
+            visibility and reliability.
+          </p>
+
+          <div class="project-highlights">
+            <p>
+              <span>→</span>
+              Metrics collection and visualization with Prometheus and Grafana.
+            </p>
+
+            <p>
+              <span>→</span>
+              Centralized logging with Loki.
+            </p>
+
+            <p>
+              <span>→</span>
+              Distributed tracing using OpenTelemetry and Tempo.
+            </p>
+
+            <p>
+              <span>→</span>
+              Practical application of SLI, SLO and error budget concepts.
+            </p>
+          </div>
+
+          <div class="tags">
+            <span>Terraform</span>
+            <span>Kubernetes</span>
+            <span>Prometheus</span>
+            <span>Grafana</span>
+            <span>Loki</span>
+            <span>OpenTelemetry</span>
+            <span>Tempo</span>
+          </div>
+
+          <div class="project-links">
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              View project →
+            </a>
+          </div>
+
+        </div>
+      </article>
+
+
+      <!-- PROJECT 2 -->
+      <article class="project-card">
+
+        <div class="project-number">
+          02
+        </div>
+
+        <div class="project-content">
+
+          <div class="project-header">
+            <div>
+              <span class="project-type">
+                Kubernetes / Cloud
+              </span>
+
+              <h2>
+                Multi-Cluster Kubernetes Observability
+              </h2>
+            </div>
+
+            <span class="project-status">
+              Lab
+            </span>
+          </div>
+
+          <p class="project-description">
+            Multi-cluster architecture separating application workloads from
+            the observability platform, centralizing metrics and logs while
+            maintaining clear infrastructure boundaries.
+          </p>
+
+          <div class="project-highlights">
+            <p>
+              <span>→</span>
+              Separate Kubernetes clusters for applications and observability.
+            </p>
+
+            <p>
+              <span>→</span>
+              Centralized metrics with Prometheus and Grafana.
+            </p>
+
+            <p>
+              <span>→</span>
+              Centralized logging using Loki and Fluent Bit.
+            </p>
+
+            <p>
+              <span>→</span>
+              Infrastructure and networking provisioned with Terraform.
+            </p>
+          </div>
+
+          <div class="tags">
+            <span>AWS</span>
+            <span>Terraform</span>
+            <span>EKS</span>
+            <span>Prometheus</span>
+            <span>Grafana</span>
+            <span>Loki</span>
+            <span>Fluent Bit</span>
+          </div>
+
+          <div class="project-links">
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              View project →
+            </a>
+          </div>
+
+        </div>
+      </article>
+
+
+      <!-- PROJECT 3 -->
+      <article class="project-card">
+
+        <div class="project-number">
+          03
+        </div>
+
+        <div class="project-content">
+
+          <div class="project-header">
+            <div>
+              <span class="project-type">
+                DevOps / AWS
+              </span>
+
+              <h2>
+                End-to-End DevOps Platform on AWS
+              </h2>
+            </div>
+
+            <span class="project-status">
+              Lab
+            </span>
+          </div>
+
+          <p class="project-description">
+            End-to-end DevOps environment combining cloud infrastructure,
+            CI/CD, Kubernetes, GitOps and observability on AWS.
+          </p>
+
+          <div class="project-highlights">
+            <p>
+              <span>→</span>
+              AWS infrastructure provisioned using Terraform.
+            </p>
+
+            <p>
+              <span>→</span>
+              CI/CD pipeline implemented with Jenkins.
+            </p>
+
+            <p>
+              <span>→</span>
+              Continuous deployment to Kubernetes using GitOps and Argo CD.
+            </p>
+
+            <p>
+              <span>→</span>
+              Monitoring and visibility using Prometheus, Grafana and Loki.
+            </p>
+          </div>
+
+          <div class="tags">
+            <span>AWS</span>
+            <span>Terraform</span>
+            <span>Jenkins</span>
+            <span>Kubernetes</span>
+            <span>Argo CD</span>
+            <span>Prometheus</span>
+            <span>Grafana</span>
+          </div>
+
+          <div class="project-links">
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              View project →
+            </a>
+          </div>
+
+        </div>
+      </article>
+
+    </div>
+
+  </section>
+</BaseLayout>
+
+
+<style>
+
+  /* =========================
+     PROJECTS GRID
+  ========================== */
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    gap: 24px;
+
+    margin-top: 70px;
+  }
+
+
+  /* =========================
+     PROJECT CARD
+  ========================== */
+
+  .project-card {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: 70px 1fr;
+
+    overflow: hidden;
+
+    border: 1px solid #283235;
+    border-radius: 10px;
+
+    background: #0d1214;
+
+    transition:
+      transform 0.2s ease,
+      border-color 0.2s ease,
+      background 0.2s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-3px);
+
+    border-color: #36d399;
+
+    background: #0f1716;
+  }
+
+
+  /* =========================
+     PROJECT NUMBER
+  ========================== */
+
+  .project-number {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    padding-top: 31px;
+
+    border-right: 1px solid #202a2c;
+
+    color: #36d399;
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+  }
+
+
+  /* =========================
+     PROJECT CONTENT
+  ========================== */
+
+  .project-content {
+    padding: 30px;
+  }
+
+  .project-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 24px;
+
+    padding-bottom: 22px;
+
+    border-bottom: 1px solid #202a2c;
+  }
+
+  .project-type {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #36d399;
+
+    font-size: 11px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.7px;
+  }
+
+  .project-content h2 {
+    margin: 0;
+
+    color: #e0e4e5;
+
+    font-family:
+      Inter,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
+
+    font-size: 22px;
+
+    font-weight: 600;
+
+    line-height: 1.35;
+  }
+
+
+  /* =========================
+     STATUS
+  ========================== */
+
+  .project-status {
+    padding: 6px 10px;
+
+    border: 1px solid #293437;
+    border-radius: 6px;
+
+    background: #111719;
+
+    color: #7f898c;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.7px;
+  }
+
+
+  /* =========================
+     DESCRIPTION
+  ========================== */
+
+  .project-description {
+    margin: 24px 0 0;
+
+    max-width: 850px;
+
+    color: #aeb5b7;
+
+    font-family:
+      Inter,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+  }
+
+
+  /* =========================
+     HIGHLIGHTS
+  ========================== */
+
+  .project-highlights {
+    margin-top: 22px;
+  }
+
+  .project-highlights p {
+    margin: 9px 0;
+
+    color: #8f999c;
+
+    font-family:
+      Inter,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+  }
+
+  .project-highlights p span {
+    margin-right: 8px;
+
+    color: #36d399;
+  }
+
+
+  /* =========================
+     TAGS
+  ========================== */
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: 24px;
+  }
+
+  .tags span {
+    padding: 6px 10px;
+
+    border: 1px solid #293437;
+    border-radius: 6px;
+
+    background: #111719;
+
+    color: #7f898c;
+
+    font-size: 11px;
+  }
+
+
+  /* =========================
+     PROJECT LINKS
+  ========================== */
+
+  .project-links {
+    margin-top: 26px;
+  }
+
+  .project-links a {
+    color: #36d399;
+
+    font-size: 13px;
+
+    text-decoration: none;
+
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .project-links a:hover {
+    opacity: 0.75;
+  }
+
+
+  /* =========================
+     MOBILE
+  ========================== */
+
+  @media (max-width: 700px) {
+
+    .projects-grid {
+      margin-top: 50px;
+    }
+
+    .project-card {
+      grid-template-columns: 1fr;
+    }
+
+    .project-number {
+      justify-content: flex-start;
+
+      padding: 16px 22px;
+
+      border-right: 0;
+      border-bottom: 1px solid #202a2c;
+    }
+
+    .project-content {
+      padding: 22px;
+    }
+
+    .project-header {
+      flex-direction: column;
+
+      gap: 12px;
+    }
+
+    .project-content h2 {
+      font-size: 20px;
+    }
+
+  }
+
+</style>

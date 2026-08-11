@@ -1,0 +1,366 @@
+---
+const currentPath = Astro.url.pathname;
+
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/experience", label: "Experience" },
+  { href: "/projects", label: "Projects" },
+  { href: "/articles", label: "Articles" },
+  { href: "/education", label: "Education" },
+];
+
+const isActive = (href: string) => {
+  if (href === "/") {
+    return currentPath === "/";
+  }
+
+  return currentPath.startsWith(href);
+};
+---
+
+<header class="header">
+  <div class="header-inner">
+
+    <a class="brand" href="/" aria-label="Go to Home">
+      <span class="prompt">$</span>
+      <span>felipe@sre</span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Main navigation">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            class:list={{ active: isActive(link.href) }}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <button
+      class="menu-button"
+      id="menu-button"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </div>
+
+  <nav
+    class="mobile-nav"
+    id="mobile-nav"
+    aria-label="Mobile navigation"
+  >
+    {
+      links.map((link) => (
+        <a
+          href={link.href}
+          class:list={{ active: isActive(link.href) }}
+        >
+          {link.label}
+        </a>
+      ))
+    }
+  </nav>
+</header>
+
+
+<script>
+  const menuButton = document.querySelector<HTMLButtonElement>("#menu-button");
+  const mobileNav = document.querySelector<HTMLElement>("#mobile-nav");
+
+  if (menuButton && mobileNav) {
+    menuButton.addEventListener("click", () => {
+      const isOpen = mobileNav.classList.toggle("open");
+
+      menuButton.classList.toggle("open", isOpen);
+
+      menuButton.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+      );
+    });
+
+    mobileNav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileNav.classList.remove("open");
+        menuButton.classList.remove("open");
+
+        menuButton.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+      });
+    });
+  }
+</script>
+
+
+<style>
+
+  /* =========================
+     HEADER
+  ========================== */
+
+  .header {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    z-index: 1000;
+
+    border-bottom: 1px solid rgba(40, 50, 53, 0.7);
+
+    background: rgba(8, 11, 12, 0.82);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .header-inner {
+    width: min(1100px, calc(100% - 48px));
+
+    height: 72px;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+
+  /* =========================
+     BRAND
+  ========================== */
+
+  .brand {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    color: #d4dada;
+
+    font-size: 14px;
+
+    text-decoration: none;
+
+    transition: color 0.2s ease;
+  }
+
+  .brand:hover {
+    color: #ffffff;
+  }
+
+  .prompt {
+    color: #36d399;
+  }
+
+
+  /* =========================
+     DESKTOP NAVIGATION
+  ========================== */
+
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+
+    gap: 28px;
+  }
+
+  .desktop-nav a {
+    position: relative;
+
+    padding: 27px 0 25px;
+
+    color: #7e8888;
+
+    font-size: 13px;
+
+    text-decoration: none;
+
+    transition: color 0.2s ease;
+  }
+
+  .desktop-nav a:hover {
+    color: #dce1e2;
+  }
+
+  .desktop-nav a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 18px;
+
+    width: 100%;
+    height: 1px;
+
+    background: #36d399;
+
+    transform: scaleX(0);
+
+    transform-origin: center;
+
+    transition: transform 0.2s ease;
+  }
+
+  .desktop-nav a:hover::after {
+    transform: scaleX(1);
+  }
+
+  .desktop-nav a.active {
+    color: #36d399;
+  }
+
+  .desktop-nav a.active::after {
+    transform: scaleX(1);
+  }
+
+
+  /* =========================
+     MOBILE BUTTON
+  ========================== */
+
+  .menu-button {
+    width: 38px;
+    height: 38px;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    gap: 5px;
+
+    padding: 0;
+
+    border: 1px solid #283235;
+    border-radius: 7px;
+
+    background: #0d1214;
+
+    cursor: pointer;
+  }
+
+  .menu-button span {
+    width: 17px;
+    height: 1px;
+
+    background: #aeb5b7;
+
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
+  }
+
+  .menu-button.open span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  .menu-button.open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-button.open span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+
+  /* =========================
+     MOBILE NAVIGATION
+  ========================== */
+
+  .mobile-nav {
+    display: none;
+
+    width: min(1100px, calc(100% - 32px));
+
+    margin: 0 auto;
+
+    padding: 10px 0 18px;
+  }
+
+  .mobile-nav.open {
+    display: flex;
+
+    flex-direction: column;
+  }
+
+  .mobile-nav a {
+    padding: 14px 4px;
+
+    border-bottom: 1px solid #20282a;
+
+    color: #7e8888;
+
+    font-size: 14px;
+
+    text-decoration: none;
+
+    transition:
+      color 0.2s ease,
+      padding-left 0.2s ease;
+  }
+
+  .mobile-nav a:last-child {
+    border-bottom: 0;
+  }
+
+  .mobile-nav a:hover {
+    padding-left: 8px;
+
+    color: #36d399;
+  }
+
+  .mobile-nav a.active {
+    color: #36d399;
+  }
+
+
+  /* =========================
+     RESPONSIVE
+  ========================== */
+
+  @media (max-width: 800px) {
+
+    .desktop-nav {
+      gap: 18px;
+    }
+
+  }
+
+
+  @media (max-width: 700px) {
+
+    .header-inner {
+      width: min(100% - 32px, 1100px);
+
+      height: 66px;
+    }
+
+    .desktop-nav {
+      display: none;
+    }
+
+    .menu-button {
+      display: flex;
+    }
+
+  }
+
+</style>
