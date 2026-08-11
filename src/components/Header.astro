@@ -1,126 +1,105 @@
 ---
+const base = import.meta.env.BASE_URL;
+
 const currentPath = Astro.url.pathname;
 
 const links = [
-  { href: "/", label: "Home" },
-  { href: "/experience", label: "Experience" },
-  { href: "/projects", label: "Projects" },
-  { href: "/articles", label: "Articles" },
-  { href: "/education", label: "Education" },
+  { href: base, label: "Home" },
+  { href: `${base}experience`, label: "Experience" },
+  { href: `${base}projects`, label: "Projects" },
+  { href: `${base}articles`, label: "Articles" },
+  { href: `${base}education`, label: "Education" },
 ];
 
 const isActive = (href: string) => {
-  if (href === "/") {
-    return currentPath === "/";
+  if (href === base) {
+    return currentPath === base || currentPath === `${base}/`;
   }
 
   return currentPath.startsWith(href);
 };
 ---
 
-<header class="header">
-  <div class="header-inner">
+<header class="site-header">
+  <div class="header-container">
 
-    <a class="brand" href="/" aria-label="Go to Home">
-      <span class="prompt">$</span>
-      <span>felipe@sre</span>
+    <a href={base} class="brand">
+      <span>$</span>
+      felipe@sre
     </a>
 
-    <nav class="desktop-nav" aria-label="Main navigation">
-      {
-        links.map((link) => (
-          <a
-            href={link.href}
-            class:list={{ active: isActive(link.href) }}
-          >
-            {link.label}
-          </a>
-        ))
-      }
-    </nav>
-
     <button
-      class="menu-button"
-      id="menu-button"
-      type="button"
-      aria-label="Open navigation menu"
+      class="menu-toggle"
+      aria-label="Toggle navigation"
       aria-expanded="false"
-      aria-controls="mobile-nav"
     >
       <span></span>
       <span></span>
       <span></span>
     </button>
 
-  </div>
+    <nav class="nav">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              "nav-link",
+              { active: isActive(link.href) },
+            ]}
+          >
+            {link.label}
+          </a>
+        ))
+      }
 
-  <nav
-    class="mobile-nav"
-    id="mobile-nav"
-    aria-label="Mobile navigation"
-  >
-    {
-      links.map((link) => (
-        <a
-          href={link.href}
-          class:list={{ active: isActive(link.href) }}
-        >
-          {link.label}
-        </a>
-      ))
-    }
-  </nav>
+      <a
+        href={`${base}#contact`}
+        class="contact-link"
+      >
+        Contact
+      </a>
+    </nav>
+
+  </div>
 </header>
 
-
 <script>
-  const menuButton = document.querySelector<HTMLButtonElement>("#menu-button");
-  const mobileNav = document.querySelector<HTMLElement>("#mobile-nav");
+  const menuToggle = document.querySelector(".menu-toggle");
+  const nav = document.querySelector(".nav");
 
-  if (menuButton && mobileNav) {
-    menuButton.addEventListener("click", () => {
-      const isOpen = mobileNav.classList.toggle("open");
+  menuToggle?.addEventListener("click", () => {
+    const isOpen = nav?.classList.toggle("open");
 
-      menuButton.classList.toggle("open", isOpen);
+    menuToggle.setAttribute(
+      "aria-expanded",
+      String(Boolean(isOpen))
+    );
+  });
 
-      menuButton.setAttribute(
+  document.querySelectorAll(".nav a").forEach((link) => {
+    link.addEventListener("click", () => {
+      nav?.classList.remove("open");
+
+      menuToggle?.setAttribute(
         "aria-expanded",
-        String(isOpen)
+        "false"
       );
     });
-
-    mobileNav.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        mobileNav.classList.remove("open");
-        menuButton.classList.remove("open");
-
-        menuButton.setAttribute(
-          "aria-expanded",
-          "false"
-        );
-      });
-    });
-  }
+  });
 </script>
 
-
 <style>
-
-  /* =========================
-     HEADER
-  ========================== */
-
-  .header {
+  .site-header {
     position: fixed;
-
     top: 0;
     left: 0;
 
-    width: 100%;
-
     z-index: 1000;
 
-    border-bottom: 1px solid rgba(40, 50, 53, 0.7);
+    width: 100%;
+
+    border-bottom: 1px solid rgba(40, 50, 53, 0.75);
 
     background: rgba(8, 11, 12, 0.82);
 
@@ -128,9 +107,8 @@ const isActive = (href: string) => {
     -webkit-backdrop-filter: blur(14px);
   }
 
-  .header-inner {
+  .header-container {
     width: min(1100px, calc(100% - 48px));
-
     height: 72px;
 
     margin: 0 auto;
@@ -140,71 +118,69 @@ const isActive = (href: string) => {
     justify-content: space-between;
   }
 
-
-  /* =========================
-     BRAND
-  ========================== */
-
   .brand {
-    display: flex;
-    align-items: center;
+    color: #d9ddde;
 
-    gap: 8px;
+    font-family:
+      "SFMono-Regular",
+      Consolas,
+      "Liberation Mono",
+      Menlo,
+      monospace;
 
-    color: #d4dada;
-
-    font-size: 14px;
+    font-size: 15px;
+    font-weight: 600;
 
     text-decoration: none;
 
     transition: color 0.2s ease;
   }
 
-  .brand:hover {
-    color: #ffffff;
-  }
+  .brand span {
+    margin-right: 7px;
 
-  .prompt {
     color: #36d399;
   }
 
+  .brand:hover {
+    color: #36d399;
+  }
 
-  /* =========================
-     DESKTOP NAVIGATION
-  ========================== */
-
-  .desktop-nav {
+  .nav {
     display: flex;
     align-items: center;
 
-    gap: 28px;
+    gap: 26px;
   }
 
-  .desktop-nav a {
+  .nav-link {
     position: relative;
 
     padding: 27px 0 25px;
 
-    color: #7e8888;
+    color: #899396;
 
-    font-size: 13px;
+    font-family:
+      "SFMono-Regular",
+      Consolas,
+      "Liberation Mono",
+      Menlo,
+      monospace;
+
+    font-size: 12px;
 
     text-decoration: none;
 
     transition: color 0.2s ease;
   }
 
-  .desktop-nav a:hover {
-    color: #dce1e2;
-  }
-
-  .desktop-nav a::after {
+  .nav-link::after {
     content: "";
 
     position: absolute;
 
     left: 0;
-    bottom: 18px;
+    bottom: 17px;
 
     width: 100%;
     height: 1px;
@@ -213,154 +189,135 @@ const isActive = (href: string) => {
 
     transform: scaleX(0);
 
-    transform-origin: center;
+    transform-origin: left;
 
     transition: transform 0.2s ease;
   }
 
-  .desktop-nav a:hover::after {
-    transform: scaleX(1);
+  .nav-link:hover {
+    color: #d9ddde;
   }
 
-  .desktop-nav a.active {
+  .nav-link.active {
     color: #36d399;
   }
 
-  .desktop-nav a.active::after {
+  .nav-link.active::after {
     transform: scaleX(1);
   }
 
+  .contact-link {
+    padding: 8px 13px;
 
-  /* =========================
-     MOBILE BUTTON
-  ========================== */
+    border: 1px solid rgba(54, 211, 153, 0.45);
+    border-radius: 6px;
 
-  .menu-button {
-    width: 38px;
-    height: 38px;
+    color: #36d399;
 
+    font-family:
+      "SFMono-Regular",
+      Consolas,
+      "Liberation Mono",
+      Menlo,
+      monospace;
+
+    font-size: 11px;
+
+    text-decoration: none;
+
+    transition:
+      background 0.2s ease,
+      border-color 0.2s ease;
+  }
+
+  .contact-link:hover {
+    border-color: #36d399;
+
+    background: rgba(54, 211, 153, 0.08);
+  }
+
+  .menu-toggle {
     display: none;
 
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    padding: 6px;
 
-    gap: 5px;
+    border: 0;
 
-    padding: 0;
-
-    border: 1px solid #283235;
-    border-radius: 7px;
-
-    background: #0d1214;
+    background: transparent;
 
     cursor: pointer;
   }
 
-  .menu-button span {
-    width: 17px;
+  .menu-toggle span {
+    width: 22px;
     height: 1px;
 
-    background: #aeb5b7;
+    display: block;
+
+    margin: 5px 0;
+
+    background: #c9cfd1;
 
     transition:
       transform 0.2s ease,
       opacity 0.2s ease;
   }
 
-  .menu-button.open span:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
-  }
-
-  .menu-button.open span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .menu-button.open span:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
-  }
-
-
-  /* =========================
-     MOBILE NAVIGATION
-  ========================== */
-
-  .mobile-nav {
-    display: none;
-
-    width: min(1100px, calc(100% - 32px));
-
-    margin: 0 auto;
-
-    padding: 10px 0 18px;
-  }
-
-  .mobile-nav.open {
-    display: flex;
-
-    flex-direction: column;
-  }
-
-  .mobile-nav a {
-    padding: 14px 4px;
-
-    border-bottom: 1px solid #20282a;
-
-    color: #7e8888;
-
-    font-size: 14px;
-
-    text-decoration: none;
-
-    transition:
-      color 0.2s ease,
-      padding-left 0.2s ease;
-  }
-
-  .mobile-nav a:last-child {
-    border-bottom: 0;
-  }
-
-  .mobile-nav a:hover {
-    padding-left: 8px;
-
-    color: #36d399;
-  }
-
-  .mobile-nav a.active {
-    color: #36d399;
-  }
-
-
-  /* =========================
-     RESPONSIVE
-  ========================== */
-
-  @media (max-width: 800px) {
-
-    .desktop-nav {
-      gap: 18px;
-    }
-
-  }
-
-
   @media (max-width: 700px) {
-
-    .header-inner {
+    .header-container {
       width: min(100% - 32px, 1100px);
-
-      height: 66px;
+      height: 68px;
     }
 
-    .desktop-nav {
+    .menu-toggle {
+      display: block;
+    }
+
+    .nav {
+      position: absolute;
+
+      top: 68px;
+      left: 0;
+
+      width: 100%;
+
       display: none;
+      flex-direction: column;
+      align-items: stretch;
+
+      gap: 0;
+
+      padding: 14px 16px 18px;
+
+      border-bottom: 1px solid #283235;
+
+      background: rgba(8, 11, 12, 0.97);
+
+      backdrop-filter: blur(14px);
     }
 
-    .menu-button {
+    .nav.open {
       display: flex;
     }
 
-  }
+    .nav-link {
+      padding: 13px 10px;
 
+      border-bottom: 1px solid rgba(40, 50, 53, 0.55);
+
+      font-size: 12px;
+    }
+
+    .nav-link::after {
+      display: none;
+    }
+
+    .contact-link {
+      margin-top: 12px;
+
+      padding: 11px;
+
+      text-align: center;
+    }
+  }
 </style>
