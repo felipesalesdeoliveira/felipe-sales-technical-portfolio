@@ -1,43 +1,9 @@
-# Astro Starter Kit: Minimal
+# Felipe Sales Technical Portfolio
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Portfólio técnico de Felipe Sales de Oliveira, DevOps Engineer e Site Reliability Engineer.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+O site apresenta experiência profissional, projetos, competências técnicas, formação e conteúdos relacionados a DevOps, SRE, Cloud, Kubernetes, infraestrutura como código, automação e observabilidade.
 
-## 🚀 Project Structure
+Este repositório contém o código-fonte do portfólio público e representa uma presença profissional pessoal.
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Todos os textos, estrutura, identidade visual e composição visual são de uso próprio.
