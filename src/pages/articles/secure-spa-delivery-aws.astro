@@ -1,0 +1,280 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout
+  title="Secure SPA Delivery with S3, CloudFront and OAC | Felipe Sales"
+  description="Architecture decisions and validation steps for delivering a React SPA through CloudFront with a private S3 origin, managed TLS and Route 53."
+>
+  <article class="article-page">
+    <a class="back-link" href={`${base}articles`}>← Back to articles</a>
+
+    <p class="article-command">$ cat secure-spa-delivery-aws.md</p>
+    <span class="article-category">AWS Architecture</span>
+
+    <h1>Secure SPA Delivery with S3, CloudFront and OAC</h1>
+
+    <p class="article-lead">
+      How I published a React single-page application behind a custom domain
+      while keeping the Amazon S3 origin private and preserving client-side routing.
+    </p>
+
+    <div class="article-meta">Published from a completed and validated AWS implementation.</div>
+
+    <section>
+      <h2>The challenge</h2>
+      <p>
+        A static frontend is simple to upload, but a production-minded delivery
+        path has more responsibilities than object storage. The application needed
+        HTTPS, a custom hostname, global delivery, protected origin access and
+        support for direct navigation to routes handled by the React router.
+      </p>
+      <p>
+        Making the S3 bucket public would have created a second entry point that
+        bypassed CloudFront controls. Using the S3 website endpoint would also have
+        prevented the origin from being protected with Origin Access Control.
+      </p>
+    </section>
+
+    <section>
+      <h2>Architecture</h2>
+      <div class="architecture-flow" aria-label="Architecture request flow">
+        <span>Browser</span><strong>→</strong><span>Route 53</span><strong>→</strong><span>CloudFront + ACM</span><strong>→</strong><span>Private S3</span>
+      </div>
+      <p>
+        Route 53 resolves the application hostname to CloudFront. The browser then
+        establishes an HTTPS connection with the CDN. CloudFront serves cached
+        objects when available and signs origin requests with OAC when it needs to
+        read from the private S3 bucket.
+      </p>
+    </section>
+
+    <section>
+      <h2>Key technical decisions</h2>
+      <div class="decision-grid">
+        <article>
+          <h3>Private origin</h3>
+          <p>S3 Block Public Access remains enabled. A distribution-scoped bucket policy authorizes CloudFront through OAC.</p>
+        </article>
+        <article>
+          <h3>Managed TLS</h3>
+          <p>ACM provides the certificate from us-east-1, the Region required for certificates attached to CloudFront.</p>
+        </article>
+        <article>
+          <h3>Custom DNS</h3>
+          <p>A Route 53 Alias record points the application hostname to the CloudFront distribution.</p>
+        </article>
+        <article>
+          <h3>SPA routing</h3>
+          <p>Custom 403 and 404 responses return index.html with status 200 so the client-side router can handle direct navigation.</p>
+        </article>
+        <article>
+          <h3>HTTPS only</h3>
+          <p>The viewer protocol policy redirects HTTP requests to HTTPS before the application content is delivered.</p>
+        </article>
+        <article>
+          <h3>Cache-aware deployment</h3>
+          <p>Publishing includes CloudFront invalidation considerations; uploading new files to S3 alone does not guarantee that users receive the latest index.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Validation evidence</h2>
+      <p>
+        I treated deployment as incomplete until the public path and the security
+        boundary had both been checked. The observed results were:
+      </p>
+      <ul class="checks">
+        <li><strong>HTTP to HTTPS:</strong> the HTTP endpoint redirected to the HTTPS application URL.</li>
+        <li><strong>Main page:</strong> the application returned a successful HTTPS response.</li>
+        <li><strong>SPA fallback:</strong> an unknown route returned index.html with status 200.</li>
+        <li><strong>Private origin:</strong> direct S3 access returned 403 AccessDenied.</li>
+        <li><strong>Edge cache:</strong> repeated requests produced a CloudFront cache hit.</li>
+        <li><strong>S3 controls:</strong> Block Public Access remained enabled and ACLs were disabled.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>What this project reinforced</h2>
+      <p>
+        DNS resolves the hostname but does not proxy the application. CloudFront is
+        the public delivery boundary, while S3 remains a regional private origin.
+        Keeping one public entry point makes TLS, caching and access control easier
+        to reason about and validate.
+      </p>
+      <p>
+        It also reinforced that a deployment procedure must include routing and
+        cache checks. A successful upload is only one step; the delivered behavior
+        is what needs to be tested.
+      </p>
+    </section>
+
+    <div class="article-actions">
+      <a href="https://residencia.fsocloudconsulting.com" target="_blank" rel="noopener noreferrer">Open live application →</a>
+      <a href="https://felipesalesdeoliveira.github.io/fso-cloud-consulting/en/projects/frontend-cdn-s3-tls-custom-domain/" target="_blank" rel="noopener noreferrer">View full technical case →</a>
+      <a href="https://github.com/felipesalesdeoliveira/residencia-trilha-foundation" target="_blank" rel="noopener noreferrer">View repository →</a>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .article-page {
+    max-width: 900px;
+    min-height: 100vh;
+    padding: 130px 0 100px;
+  }
+
+  .back-link,
+  .article-actions a {
+    color: #36d399;
+    font-size: 13px;
+    text-decoration: none;
+  }
+
+  .article-command {
+    margin: 42px 0 16px;
+    color: #36d399;
+    font-size: 14px;
+  }
+
+  .article-category {
+    color: #5ca8ff;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+
+  h1 {
+    max-width: 820px;
+    margin: 18px 0 0;
+    color: #e7ebec;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: clamp(38px, 6vw, 62px);
+    line-height: 1.08;
+    letter-spacing: -2px;
+  }
+
+  .article-lead {
+    max-width: 760px;
+    margin: 26px 0 0;
+    color: #aeb5b7;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 20px;
+    line-height: 1.7;
+  }
+
+  .article-meta {
+    margin-top: 24px;
+    padding-bottom: 34px;
+    border-bottom: 1px solid #252d30;
+    color: #667174;
+    font-size: 12px;
+  }
+
+  section {
+    margin-top: 54px;
+  }
+
+  h2 {
+    margin: 0 0 20px;
+    color: #dfe4e5;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 28px;
+  }
+
+  p,
+  .checks {
+    color: #9ba4a7;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .architecture-flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin: 28px 0;
+    padding: 24px;
+    border: 1px solid #283235;
+    border-radius: 10px;
+    background: #0d1214;
+  }
+
+  .architecture-flow span {
+    padding: 10px 13px;
+    border: 1px solid #303a3d;
+    border-radius: 7px;
+    color: #d9ddde;
+    font-size: 13px;
+  }
+
+  .architecture-flow strong {
+    color: #36d399;
+  }
+
+  .decision-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .decision-grid article {
+    padding: 22px;
+    border: 1px solid #283235;
+    border-radius: 9px;
+    background: #0d1214;
+  }
+
+  .decision-grid h3 {
+    margin: 0;
+    color: #d9ddde;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 17px;
+  }
+
+  .decision-grid p {
+    margin: 12px 0 0;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .checks {
+    padding-left: 22px;
+  }
+
+  .checks li {
+    margin-bottom: 12px;
+  }
+
+  .checks strong {
+    color: #d9ddde;
+  }
+
+  .article-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid #252d30;
+  }
+
+  @media (max-width: 700px) {
+    .article-page {
+      padding-top: 110px;
+    }
+
+    .decision-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .article-lead {
+      font-size: 18px;
+    }
+  }
+</style>

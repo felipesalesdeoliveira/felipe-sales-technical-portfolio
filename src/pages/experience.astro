@@ -78,6 +78,25 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             </li>
           </ul>
 
+          <h3 class="experience-subtitle">Selected technical work</h3>
+
+          <ul>
+            <li>
+              Designed an end-to-end DevOps architecture on AWS with
+              Terraform, Jenkins, Kubernetes, Argo CD, Prometheus and Grafana.
+            </li>
+
+            <li>
+              Built multi-cluster and 360° Kubernetes observability projects
+              covering centralized metrics, logs and distributed traces.
+            </li>
+
+            <li>
+              Developed an AWS cost monitoring and optimization solution with
+              Cost Explorer, AWS Budgets, Compute Optimizer and Lambda.
+            </li>
+          </ul>
+
           <div class="tags">
             <span>SRE</span>
             <span>Consulting</span>
@@ -87,73 +106,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <span>Terraform</span>
             <span>CI/CD</span>
             <span>GitOps</span>
-          </div>
-
-        </div>
-      </article>
-
-
-      <!-- TECHNICAL PROJECTS -->
-      <article class="experience-item">
-
-        <div class="timeline-marker"></div>
-
-        <div class="experience-card">
-
-          <div class="experience-header">
-            <div>
-              <span class="experience-period">
-                Jan 2025 — Dec 2025
-              </span>
-
-              <h2>DevOps & SRE — Technical Projects</h2>
-
-              <p class="company">
-                FSO Cloud Consulting
-              </p>
-            </div>
-
-            <span class="location">
-              Florianópolis, SC, Brazil
-            </span>
-          </div>
-
-          <p class="experience-description">
-            Developed hands-on technical projects applying DevOps, SRE,
-            cloud, Kubernetes, Infrastructure as Code, CI/CD, GitOps,
-            observability and FinOps practices.
-          </p>
-
-          <ul>
-            <li>
-              Designed an end-to-end DevOps architecture on AWS with
-              Terraform, Jenkins, Kubernetes, Argo CD, Prometheus and Grafana.
-            </li>
-
-            <li>
-              Built a multi-cluster Kubernetes observability architecture
-              with centralized metrics and logs on Amazon EKS.
-            </li>
-
-            <li>
-              Implemented 360° Kubernetes observability by correlating
-              metrics, logs and traces with OpenTelemetry and Tempo.
-            </li>
-
-            <li>
-              Developed an AWS cost monitoring and optimization solution
-              using Cost Explorer, AWS Budgets, Compute Optimizer and Lambda.
-            </li>
-          </ul>
-
-          <div class="tags">
-            <span>AWS</span>
-            <span>Terraform</span>
-            <span>Kubernetes</span>
-            <span>Argo CD</span>
-            <span>Prometheus</span>
-            <span>OpenTelemetry</span>
-            <span>FinOps</span>
           </div>
 
         </div>
@@ -444,6 +396,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     font-size: 14px;
 
     line-height: 1.7;
+  }
+
+  .experience-subtitle {
+    margin: 26px 0 0;
+    color: #d9ddde;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
   }
 
   .experience-card li {

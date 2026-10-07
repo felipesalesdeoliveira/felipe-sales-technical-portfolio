@@ -1,10 +1,17 @@
 ---
 import Header from "../components/Header.astro";
 
+const base = import.meta.env.BASE_URL;
+
 const {
   title = "Felipe Sales | DevOps & SRE",
-  description = "Portfolio of Felipe Sales - DevOps Engineer and Site Reliability Engineer"
+  description = "Portfolio of Felipe Sales - Cloud, DevOps and SRE Consultant"
 } = Astro.props;
+
+const canonical = new URL(
+  Astro.url.pathname,
+  "https://felipesalesdeoliveira.github.io"
+).toString();
 ---
 
 <html lang="en">
@@ -16,6 +23,14 @@ const {
       name="description"
       content={description}
     />
+
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
 
     <title>{title}</title>
   </head>

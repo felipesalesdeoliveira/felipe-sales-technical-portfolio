@@ -20,10 +20,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <div class="projects-grid">
 
       <!-- PROJECT 1 -->
-      <article class="project-card">
+      <article class="project-card" style="order: 5">
 
         <div class="project-number">
-          01
+          05
         </div>
 
         <div class="project-content">
@@ -83,8 +83,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </div>
 
           <div class="project-links">
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              View project →
+            <a
+              href="https://github.com/felipesalesdeoliveira/Observability-360-Metrics-Logs-Traces-and-SLO-Monitoring-in-Kubernetes"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View repository →
             </a>
           </div>
 
@@ -93,10 +97,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
       <!-- PROJECT 2 -->
-      <article class="project-card">
+      <article class="project-card" style="order: 4">
 
         <div class="project-number">
-          02
+          04
         </div>
 
         <div class="project-content">
@@ -156,8 +160,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </div>
 
           <div class="project-links">
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              View project →
+            <a
+              href="https://github.com/felipesalesdeoliveira/Multi-Cluster-Observability-Architecture-with-Prometheus-Grafana-Loki-and-ELK"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View repository →
             </a>
           </div>
 
@@ -166,7 +174,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
       <!-- PROJECT 3 -->
-      <article class="project-card">
+      <article class="project-card" style="order: 3">
 
         <div class="project-number">
           03
@@ -228,8 +236,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </div>
 
           <div class="project-links">
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              View project →
+            <a
+              href="https://github.com/felipesalesdeoliveira/End-to-End-DevOps-Pipeline-on-AWS-with-Terraform-Jenkins-and-EKS"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View repository →
             </a>
           </div>
 
@@ -238,10 +250,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
       <!-- PROJECT 4 -->
-      <article class="project-card">
+      <article class="project-card" style="order: 1">
 
         <div class="project-number">
-          04
+          01
         </div>
 
         <div class="project-content">
@@ -307,6 +319,20 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             >
               View case study →
             </a>
+            <a
+              href="https://residencia.fsocloudconsulting.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open live application →
+            </a>
+            <a
+              href="https://github.com/felipesalesdeoliveira/residencia-trilha-foundation"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View repository →
+            </a>
           </div>
 
         </div>
@@ -314,10 +340,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
       <!-- PROJECT 5 -->
-      <article class="project-card">
+      <article class="project-card" style="order: 2">
 
         <div class="project-number">
-          05
+          02
         </div>
 
         <div class="project-content">
@@ -382,6 +408,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
               rel="noopener noreferrer"
             >
               View case study →
+            </a>
+            <a
+              href="https://github.com/felipesalesdeoliveira/residencia-trilha-foundation"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View repository →
             </a>
           </div>
 
@@ -628,6 +661,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   ========================== */
 
   .project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+
     margin-top: 26px;
   }
 

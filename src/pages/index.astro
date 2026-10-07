@@ -15,10 +15,17 @@ const base = import.meta.env.BASE_URL;
 
     <meta
       name="description"
-      content="Technical portfolio of Felipe Sales de Oliveira - DevOps Engineer and Site Reliability Engineer"
+      content="Technical portfolio of Felipe Sales de Oliveira, Cloud, DevOps and SRE Consultant focused on AWS, Kubernetes, Infrastructure as Code, GitOps and observability."
     />
 
-    <title>Felipe Sales | DevOps & SRE</title>
+    <link rel="canonical" href="https://felipesalesdeoliveira.github.io/felipe-sales-technical-portfolio/" />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Felipe Sales | Cloud, DevOps & SRE Consultant" />
+    <meta property="og:description" content="AWS, Kubernetes, Infrastructure as Code, GitOps, observability and reliability engineering backed by hands-on technical cases." />
+    <meta property="og:url" content="https://felipesalesdeoliveira.github.io/felipe-sales-technical-portfolio/" />
+
+    <title>Felipe Sales | Cloud, DevOps & SRE Consultant</title>
   </head>
 
   <body>
@@ -60,9 +67,7 @@ const base = import.meta.env.BASE_URL;
             </p>
 
             <p class="role">
-              DevOps Engineer
-              <strong>|</strong>
-              Site Reliability Engineer
+              Cloud, DevOps & SRE Consultant
             </p>
 
             <p class="command">
@@ -70,11 +75,11 @@ const base = import.meta.env.BASE_URL;
             </p>
 
             <p class="bio">
-              I design, automate, and operate cloud infrastructure with a focus on{" "}
-              <strong>reliability</strong>,{" "}
-              <strong>observability</strong>,{" "}
-              <strong>scalability</strong>, and{" "}
-              <strong>continuous improvement</strong>.
+              I design, automate and operate <strong>AWS</strong> and{" "}
+              <strong>Kubernetes</strong> environments using Infrastructure as Code,
+              CI/CD, GitOps and observability practices. My work focuses on reliable
+              delivery, production visibility and infrastructure that teams can
+              reproduce and maintain.
             </p>
 
             <p class="command connect">
@@ -101,6 +106,10 @@ const base = import.meta.env.BASE_URL;
 
               <a href="mailto:fesales.oliveira@gmail.com">
                 Email
+              </a>
+
+              <a href={`${base}felipe-sales-resume.pdf`} download>
+                Résumé
               </a>
 
             </div>
@@ -143,23 +152,15 @@ const base = import.meta.env.BASE_URL;
         <div class="skills-grid">
 
           <article class="skill-card">
-            <h3>DevOps Engineering</h3>
+            <h3>AWS Cloud Architecture</h3>
           </article>
 
           <article class="skill-card">
-            <h3>Site Reliability Engineering</h3>
+            <h3>Infrastructure as Code & Automation</h3>
           </article>
 
           <article class="skill-card">
-            <h3>Cloud Computing</h3>
-          </article>
-
-          <article class="skill-card">
-            <h3>Kubernetes & Containers</h3>
-          </article>
-
-          <article class="skill-card">
-            <h3>Infrastructure as Code</h3>
+            <h3>Kubernetes & Container Platforms</h3>
           </article>
 
           <article class="skill-card">
@@ -167,18 +168,89 @@ const base = import.meta.env.BASE_URL;
           </article>
 
           <article class="skill-card">
-            <h3>Observability</h3>
+            <h3>Observability & Reliability Engineering</h3>
           </article>
 
           <article class="skill-card">
-            <h3>Automation</h3>
-          </article>
-
-          <article class="skill-card">
-            <h3>Networking</h3>
+            <h3>Incident Response & Troubleshooting</h3>
           </article>
 
         </div>
+
+      </section>
+
+
+      <!-- =========================
+           FEATURED PROJECTS
+      ========================== -->
+
+      <section class="section">
+
+        <div class="section-title">
+          <span>#</span>
+          <h2>Featured Projects</h2>
+        </div>
+
+        <p class="section-intro">
+          Technical cases showing architecture decisions, implementation status
+          and evidence from hands-on AWS environments.
+        </p>
+
+        <div class="featured-projects-grid">
+
+          <article class="featured-project-card">
+            <div class="featured-project-meta">
+              <span>AWS & CDN</span>
+              <strong class="status-completed">Completed</strong>
+            </div>
+            <h3>Secure Frontend Delivery on AWS</h3>
+            <p>
+              React SPA delivered from a private S3 origin through CloudFront,
+              with OAC, managed TLS, custom DNS and a validated routing fallback.
+            </p>
+            <ul>
+              <li>Direct S3 access blocked with 403</li>
+              <li>HTTP redirected to HTTPS</li>
+              <li>SPA routes and CloudFront cache behavior validated</li>
+            </ul>
+            <a
+              href="https://felipesalesdeoliveira.github.io/fso-cloud-consulting/en/projects/frontend-cdn-s3-tls-custom-domain/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View technical case →
+            </a>
+          </article>
+
+          <article class="featured-project-card">
+            <div class="featured-project-meta">
+              <span>AWS & Serverless</span>
+              <strong class="status-progress">In Progress</strong>
+            </div>
+            <h3>Serverless Marketplace with Identity and Events</h3>
+            <p>
+              Evolution of the published SPA into an event-driven system with
+              Cognito, API Gateway, Lambda, DynamoDB, S3, SQS and a DLQ.
+            </p>
+            <ul>
+              <li>Authentication and protected APIs</li>
+              <li>Persistent catalog and product images</li>
+              <li>Asynchronous order processing with failure isolation</li>
+            </ul>
+            <a
+              href="https://felipesalesdeoliveira.github.io/fso-cloud-consulting/en/projects/serverless-marketplace-identity-events/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Follow implementation →
+            </a>
+          </article>
+
+        </div>
+
+        <a class="all-projects-link" href={`${base}projects`}>
+          View all projects →
+        </a>
 
       </section>
 
@@ -201,7 +273,7 @@ const base = import.meta.env.BASE_URL;
           <div class="tech-group">
 
             <h3 class="tech-group-title">
-              Cloud
+              Primary Cloud
             </h3>
 
             <div class="tech-grid">
@@ -213,30 +285,6 @@ const base = import.meta.env.BASE_URL;
                   class="aws-icon"
                 />
                 <span>AWS</span>
-              </article>
-
-              <article class="tech-card">
-                <img
-                  src={`${base}icons/azure.svg`}
-                  alt="Microsoft Azure"
-                />
-                <span>Azure</span>
-              </article>
-
-              <article class="tech-card">
-                <img
-                  src={`${base}icons/gcp.svg`}
-                  alt="Google Cloud"
-                />
-                <span>Google Cloud</span>
-              </article>
-
-              <article class="tech-card">
-                <img
-                  src={`${base}icons/oci.svg`}
-                  alt="Oracle Cloud Infrastructure"
-                />
-                <span>OCI</span>
               </article>
 
             </div>
@@ -311,14 +359,6 @@ const base = import.meta.env.BASE_URL;
 
               <article class="tech-card">
                 <img
-                  src={`${base}icons/ansible.svg`}
-                  alt="Ansible"
-                />
-                <span>Ansible</span>
-              </article>
-
-              <article class="tech-card">
-                <img
                   src={`${base}icons/linux.svg`}
                   alt="Linux"
                 />
@@ -358,26 +398,10 @@ const base = import.meta.env.BASE_URL;
 
               <article class="tech-card">
                 <img
-                  src={`${base}icons/azuredevops.svg`}
-                  alt="Azure DevOps"
-                />
-                <span>Azure DevOps</span>
-              </article>
-
-              <article class="tech-card">
-                <img
                   src={`${base}icons/jenkins.svg`}
                   alt="Jenkins"
                 />
                 <span>Jenkins</span>
-              </article>
-
-              <article class="tech-card">
-                <img
-                  src={`${base}icons/gitlab.svg`}
-                  alt="GitLab CI"
-                />
-                <span>GitLab CI</span>
               </article>
 
               <article class="tech-card">
@@ -437,33 +461,73 @@ const base = import.meta.env.BASE_URL;
 
               <article class="tech-card">
                 <img
-                  src={`${base}icons/opensearch.svg`}
-                  alt="OpenSearch"
-                />
-                <span>OpenSearch</span>
-              </article>
-
-              <article class="tech-card">
-                <img
                   src={`${base}icons/opentelemetry.svg`}
                   alt="OpenTelemetry"
                 />
                 <span>OpenTelemetry</span>
               </article>
 
+            </div>
+
+          </div>
+
+
+          <!-- ADDITIONAL EXPERIENCE -->
+
+          <div class="tech-group additional-stack">
+
+            <h3 class="tech-group-title">
+              Additional Experience
+            </h3>
+
+            <p class="tech-group-description">
+              Tools and platforms used in previous projects, labs or supporting work.
+            </p>
+
+            <div class="tech-grid">
+
               <article class="tech-card">
-                <img
-                  src={`${base}icons/datadog.svg`}
-                  alt="Datadog"
-                />
+                <img src={`${base}icons/azure.svg`} alt="Microsoft Azure" />
+                <span>Azure</span>
+              </article>
+
+              <article class="tech-card">
+                <img src={`${base}icons/gcp.svg`} alt="Google Cloud" />
+                <span>Google Cloud</span>
+              </article>
+
+              <article class="tech-card">
+                <img src={`${base}icons/oci.svg`} alt="Oracle Cloud Infrastructure" />
+                <span>OCI</span>
+              </article>
+
+              <article class="tech-card">
+                <img src={`${base}icons/ansible.svg`} alt="Ansible" />
+                <span>Ansible</span>
+              </article>
+
+              <article class="tech-card">
+                <img src={`${base}icons/azuredevops.svg`} alt="Azure DevOps" />
+                <span>Azure DevOps</span>
+              </article>
+
+              <article class="tech-card">
+                <img src={`${base}icons/gitlab.svg`} alt="GitLab CI" />
+                <span>GitLab CI</span>
+              </article>
+
+              <article class="tech-card">
+                <img src={`${base}icons/opensearch.svg`} alt="OpenSearch" />
+                <span>OpenSearch</span>
+              </article>
+
+              <article class="tech-card">
+                <img src={`${base}icons/datadog.svg`} alt="Datadog" />
                 <span>Datadog</span>
               </article>
 
               <article class="tech-card">
-                <img
-                  src={`${base}icons/dynatrace.svg`}
-                  alt="Dynatrace"
-                />
+                <img src={`${base}icons/dynatrace.svg`} alt="Dynatrace" />
                 <span>Dynatrace</span>
               </article>
 
@@ -511,13 +575,7 @@ const base = import.meta.env.BASE_URL;
                 AWS Certified Cloud Practitioner
               </h3>
 
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View credential →
-              </a>
+              <span class="cert-status">Listed on LinkedIn</span>
 
             </div>
 
@@ -545,47 +603,7 @@ const base = import.meta.env.BASE_URL;
                 Linux Essentials
               </h3>
 
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View credential →
-              </a>
-
-            </div>
-
-          </article>
-
-
-          <!-- KUBERNETES -->
-
-          <article class="cert-card">
-
-            <div class="cert-icon">
-              <img
-                src={`${base}icons/kubernetes.svg`}
-                alt="Kubernetes"
-              />
-            </div>
-
-            <div class="cert-content">
-
-              <span class="cert-issuer">
-                Kubernetes
-              </span>
-
-              <h3>
-                Kubernetes Essentials
-              </h3>
-
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View credential →
-              </a>
+              <span class="cert-status">Listed on LinkedIn</span>
 
             </div>
 
@@ -651,8 +669,9 @@ const base = import.meta.env.BASE_URL;
           </p>
 
           <p class="contact-text">
-            Feel free to reach out for opportunities, collaborations,
-            or conversations about DevOps, SRE, Cloud and Observability.
+            For DevOps and SRE opportunities, technical collaboration or
+            consulting engagements involving AWS, Kubernetes, automation and
+            observability, choose the channel that best fits the conversation.
           </p>
 
           <p class="contact-email">
@@ -679,6 +698,18 @@ const base = import.meta.env.BASE_URL;
 
             <a href="mailto:fesales.oliveira@gmail.com">
               Email
+            </a>
+
+            <a href={`${base}felipe-sales-resume.pdf`} download>
+              Download Résumé
+            </a>
+
+            <a
+              href="https://felipesalesdeoliveira.github.io/fso-cloud-consulting/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Consulting
             </a>
 
           </div>
@@ -1114,6 +1145,102 @@ const base = import.meta.env.BASE_URL;
     line-height: 1.4;
   }
 
+  .section-intro {
+    max-width: 760px;
+    margin: 28px 0 0;
+    color: #8d969a;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .featured-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 28px;
+  }
+
+  .featured-project-card {
+    display: flex;
+    flex-direction: column;
+    padding: 28px;
+    border: 1px solid #283235;
+    border-radius: 10px;
+    background: #0d1214;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  }
+
+  .featured-project-card:hover {
+    transform: translateY(-3px);
+    border-color: #36d399;
+    background: #0f1716;
+  }
+
+  .featured-project-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    color: #36d399;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+  }
+
+  .featured-project-meta strong {
+    padding: 5px 9px;
+    border: 1px solid #293437;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 500;
+  }
+
+  .status-completed {
+    color: #36d399;
+  }
+
+  .status-progress {
+    color: #f0b75b;
+  }
+
+  .featured-project-card h3 {
+    margin: 24px 0 0;
+    color: #e0e4e5;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 23px;
+    line-height: 1.35;
+  }
+
+  .featured-project-card p,
+  .featured-project-card li {
+    color: #9ba4a7;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .featured-project-card ul {
+    margin: 18px 0 24px;
+    padding-left: 20px;
+  }
+
+  .featured-project-card a,
+  .all-projects-link {
+    color: #36d399;
+    font-size: 13px;
+    text-decoration: none;
+  }
+
+  .featured-project-card a {
+    margin-top: auto;
+  }
+
+  .all-projects-link {
+    display: inline-block;
+    margin-top: 24px;
+  }
+
 
   /* =========================
      TECH STACK
@@ -1139,6 +1266,25 @@ const base = import.meta.env.BASE_URL;
     text-transform: uppercase;
 
     letter-spacing: 1px;
+  }
+
+  .tech-group-description {
+    max-width: 680px;
+    margin: -4px 0 16px;
+    color: #667174;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .additional-stack {
+    padding-top: 28px;
+    border-top: 1px solid #252d30;
+  }
+
+  .additional-stack .tech-card {
+    min-height: 92px;
+    opacity: 0.78;
   }
 
   .tech-grid {
@@ -1347,6 +1493,13 @@ const base = import.meta.env.BASE_URL;
     opacity: 0.7;
   }
 
+  .cert-status {
+    color: #667174;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
 
   /* =========================
      CONTACT
@@ -1459,6 +1612,10 @@ const base = import.meta.env.BASE_URL;
     .tech-grid {
       grid-template-columns:
         repeat(3, minmax(0, 1fr));
+    }
+
+    .featured-projects-grid {
+      grid-template-columns: 1fr;
     }
 
   }
