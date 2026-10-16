@@ -24,8 +24,11 @@ const isActive = (href: string) => {
   <div class="header-container">
 
     <a href={base} class="brand">
-      <span>$</span>
-      felipe@sre
+      <span class="brand-mark">FS</span>
+      <span class="brand-copy">
+        <strong>Felipe Sales</strong>
+        <small>Cloud · DevOps · SRE</small>
+      </span>
     </a>
 
     <button
@@ -99,17 +102,17 @@ const isActive = (href: string) => {
 
     width: 100%;
 
-    border-bottom: 1px solid rgba(40, 50, 53, 0.75);
+    border-bottom: 1px solid rgba(96, 165, 250, 0.12);
 
-    background: rgba(8, 11, 12, 0.82);
+    background: rgba(2, 6, 23, 0.76);
 
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
   }
 
   .header-container {
-    width: min(1100px, calc(100% - 48px));
-    height: 72px;
+    width: min(1180px, calc(100% - 48px));
+    height: 78px;
 
     margin: 0 auto;
 
@@ -119,52 +122,75 @@ const isActive = (href: string) => {
   }
 
   .brand {
-    color: #d9ddde;
+    display: flex;
+    align-items: center;
+    gap: 11px;
 
-    font-family:
-      "SFMono-Regular",
-      Consolas,
-      "Liberation Mono",
-      Menlo,
-      monospace;
+    color: #f1f5f9;
 
-    font-size: 15px;
-    font-weight: 600;
+    font-family: "Geist", Inter, sans-serif;
 
     text-decoration: none;
 
     transition: color 0.2s ease;
   }
 
-  .brand span {
-    margin-right: 7px;
-
-    color: #36d399;
+  .brand-mark {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(96, 165, 250, 0.32);
+    border-radius: 10px;
+    background: linear-gradient(145deg, rgba(37, 99, 235, 0.24), rgba(124, 58, 237, 0.18));
+    box-shadow: inset 0 1px rgba(255,255,255,.06), 0 8px 24px rgba(37,99,235,.12);
+    color: #7dd3fc;
+    font-family: "Geist Mono", monospace;
+    font-size: 12px;
+    font-weight: 600;
   }
 
   .brand:hover {
-    color: #36d399;
+    color: #7dd3fc;
+  }
+
+  .brand-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .brand-copy strong {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .brand-copy small {
+    color: #64748b;
+    font-family: "Geist Mono", monospace;
+    font-size: 8px;
+    font-weight: 500;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
   }
 
   .nav {
     display: flex;
     align-items: center;
 
-    gap: 26px;
+    gap: 25px;
   }
 
   .nav-link {
     position: relative;
 
-    padding: 27px 0 25px;
+    padding: 30px 0 28px;
 
-    color: #899396;
+    color: #94a3b8;
 
     font-family:
-      "SFMono-Regular",
-      Consolas,
-      "Liberation Mono",
-      Menlo,
+      "Geist Mono",
       monospace;
 
     font-size: 12px;
@@ -185,7 +211,7 @@ const isActive = (href: string) => {
     width: 100%;
     height: 1px;
 
-    background: #36d399;
+    background: linear-gradient(90deg, #3b82f6, #22d3ee, #8b5cf6);
 
     transform: scaleX(0);
 
@@ -195,11 +221,11 @@ const isActive = (href: string) => {
   }
 
   .nav-link:hover {
-    color: #d9ddde;
+    color: #f1f5f9;
   }
 
   .nav-link.active {
-    color: #36d399;
+    color: #7dd3fc;
   }
 
   .nav-link.active::after {
@@ -207,18 +233,17 @@ const isActive = (href: string) => {
   }
 
   .contact-link {
-    padding: 8px 13px;
+    padding: 10px 15px;
 
-    border: 1px solid rgba(54, 211, 153, 0.45);
-    border-radius: 6px;
+    border: 1px solid rgba(96, 165, 250, 0.32);
+    border-radius: 10px;
 
-    color: #36d399;
+    background: linear-gradient(105deg, rgba(37,99,235,.18), rgba(124,58,237,.14));
+
+    color: #bfdbfe;
 
     font-family:
-      "SFMono-Regular",
-      Consolas,
-      "Liberation Mono",
-      Menlo,
+      "Geist Mono",
       monospace;
 
     font-size: 11px;
@@ -231,9 +256,9 @@ const isActive = (href: string) => {
   }
 
   .contact-link:hover {
-    border-color: #36d399;
+    border-color: rgba(125, 211, 252, 0.56);
 
-    background: rgba(54, 211, 153, 0.08);
+    background: linear-gradient(105deg, rgba(37,99,235,.28), rgba(124,58,237,.2));
   }
 
   .menu-toggle {
@@ -256,7 +281,7 @@ const isActive = (href: string) => {
 
     margin: 5px 0;
 
-    background: #c9cfd1;
+    background: #cbd5e1;
 
     transition:
       transform 0.2s ease,
@@ -266,7 +291,7 @@ const isActive = (href: string) => {
   @media (max-width: 700px) {
     .header-container {
       width: min(100% - 32px, 1100px);
-      height: 68px;
+      height: 70px;
     }
 
     .menu-toggle {
@@ -276,7 +301,7 @@ const isActive = (href: string) => {
     .nav {
       position: absolute;
 
-      top: 68px;
+      top: 70px;
       left: 0;
 
       width: 100%;
@@ -289,9 +314,9 @@ const isActive = (href: string) => {
 
       padding: 14px 16px 18px;
 
-      border-bottom: 1px solid #283235;
+      border-bottom: 1px solid rgba(96, 165, 250, 0.16);
 
-      background: rgba(8, 11, 12, 0.97);
+      background: rgba(2, 6, 23, 0.97);
 
       backdrop-filter: blur(14px);
     }
@@ -303,7 +328,7 @@ const isActive = (href: string) => {
     .nav-link {
       padding: 13px 10px;
 
-      border-bottom: 1px solid rgba(40, 50, 53, 0.55);
+      border-bottom: 1px solid rgba(96, 165, 250, 0.10);
 
       font-size: 12px;
     }

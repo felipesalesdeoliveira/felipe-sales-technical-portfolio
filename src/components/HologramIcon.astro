@@ -1,0 +1,57 @@
+---
+interface Props { kind: "aws" | "kubernetes" | "telemetry" | "docker" | "terraform" | "gitops" | "sre" }
+const { kind } = Astro.props;
+const id = `holo-${kind}`;
+---
+
+<svg class="hologram-icon" viewBox="0 0 100 90" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id={`${id}-light`} x1="16" y1="12" x2="80" y2="72" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#e0fcff" /><stop offset=".4" stop-color="#36dcff" /><stop offset="1" stop-color="#af83ff" />
+    </linearGradient>
+    <g id={`${id}-shape`} stroke-linejoin="round" stroke-linecap="round">
+      {kind === "aws" && <>
+        <path d="M24 53C9 53 9 32 25 31C28 11 54 10 62 27C80 20 91 46 75 53Z" />
+        <text x="49" y="43" text-anchor="middle" fill="currentColor" stroke="none" font-size="17" font-family="Arial, sans-serif" font-weight="700">aws</text>
+        <path d="M30 47Q48 57 67 45M61 45L68 44L66 50" />
+      </>}
+      {kind === "kubernetes" && <>
+        <path d="M50 12L75 24L81 51L63 70H37L19 51L25 24Z" fill="currentColor" fill-opacity=".04" />
+        <circle cx="50" cy="41" r="19" /><circle cx="50" cy="41" r="6" />
+        {[0, 51.43, 102.86, 154.29, 205.72, 257.15, 308.58].map(angle => <path d="M50 34V16M47 17H53" transform={`rotate(${angle} 50 41)`} />)}
+      </>}
+      {kind === "telemetry" && <>
+        <path d="M29 44L59 18L74 34L44 60ZM54 22L69 38M33 40L48 56M59 18L64 13L79 29L74 34M29 44L23 50L38 66L44 60M47 58L52 74M52 74H70M52 74L40 79" />
+        <circle cx="57" cy="49" r="5" /><path d="M18 19H27M22 15V24M75 56H84M79 52V61" />
+      </>}
+      {kind === "docker" && <>
+        <path d="M12 43H73Q80 43 84 37Q79 33 80 25Q89 29 90 36Q95 34 98 37Q94 44 84 46Q78 69 50 71Q21 73 12 53Z" fill="currentColor" fill-opacity=".07" />
+        <path d="M21 32H32V42H21ZM35 32H46V42H35ZM49 32H60V42H49ZM63 32H74V42H63ZM35 19H46V29H35ZM49 19H60V29H49ZM49 6H60V16H49Z" fill="currentColor" fill-opacity=".12" />
+        <circle cx="25" cy="51" r="1.5" fill="currentColor" stroke="none" />
+        <path d="M18 59Q40 66 62 58" stroke-opacity=".45" />
+      </>}
+      {kind === "terraform" && <>
+        <path d="M18 14L39 26V50L18 38ZM44 29L65 41V65L44 53ZM70 41L89 30V54L70 65ZM44 58L65 70V89L44 77Z" fill="currentColor" fill-opacity=".08" transform="translate(0 -6)" />
+      </>}
+      {kind === "gitops" && <>
+        <path d="M25 30C34 10 65 10 77 31M77 31V18M77 31H64M75 58C66 78 35 78 23 57M23 57V70M23 57H36" />
+        <path d="M44 31V56M44 43C61 43 61 39 61 33" /><circle cx="44" cy="27" r="4" /><circle cx="44" cy="60" r="4" /><circle cx="61" cy="29" r="4" />
+      </>}
+      {kind === "sre" && <>
+        <path d="M50 12L76 22V43Q76 64 50 77Q24 64 24 43V22Z" fill="currentColor" fill-opacity=".04" />
+        <path d="M29 45H39L45 30L54 59L61 41L66 45H73" />
+      </>}
+    </g>
+  </defs>
+  <ellipse cx="50" cy="81" rx="32" ry="5" stroke="#4ddfff" stroke-opacity=".4" />
+  <ellipse cx="50" cy="81" rx="23" ry="3" fill="#37cfff" fill-opacity=".09" />
+  <path d="M30 76L40 58M70 76L60 58" stroke="#55dfff" stroke-opacity=".15" />
+  <use href={`#${id}-shape`} transform="translate(3 3)" stroke="#7955e8" stroke-width="3" opacity=".45" />
+  <use class="icon-bloom" href={`#${id}-shape`} stroke="#26d9ff" stroke-width="3.5" opacity=".6" />
+  <use href={`#${id}-shape`} stroke={`url(#${id}-light)`} stroke-width="1.6" />
+</svg>
+
+<style>
+  .hologram-icon { display: block; width: 100%; height: 100%; overflow: visible; color: #98eeff; filter: drop-shadow(0 0 6px #22baff66); }
+  .icon-bloom { filter: blur(2px); }
+</style>

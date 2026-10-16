@@ -1,5 +1,6 @@
 ---
 import Header from "../components/Header.astro";
+import CloudScene from "../components/CloudScene.astro";
 
 const base = import.meta.env.BASE_URL;
 ---
@@ -20,6 +21,9 @@ const base = import.meta.env.BASE_URL;
 
     <link rel="canonical" href="https://felipesalesdeoliveira.github.io/felipe-sales-technical-portfolio/" />
     <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Felipe Sales | Cloud, DevOps & SRE Consultant" />
     <meta property="og:description" content="AWS, Kubernetes, Infrastructure as Code, GitOps, observability and reliability engineering backed by hands-on technical cases." />
@@ -38,102 +42,79 @@ const base = import.meta.env.BASE_URL;
       ========================== -->
 
       <section id="home" class="hero">
-        <div class="terminal-window">
+        <div class="hero-ambient" aria-hidden="true">
+          <span class="orb orb-blue"></span>
+          <span class="orb orb-violet"></span>
+          <span class="hero-grid"></span>
+          <span class="particle particle-one"></span>
+          <span class="particle particle-two"></span>
+          <span class="particle particle-three"></span>
+          <span class="particle particle-four"></span>
+        </div>
 
-          <div class="terminal-header">
-            <div class="traffic-lights">
-              <span class="red"></span>
-              <span class="yellow"></span>
-              <span class="green"></span>
+        <div class="hero-layout">
+          <div class="hero-copy">
+            <div class="eyebrow">
+              <span class="pulse-dot"></span>
+              Cloud · DevOps · Reliability Engineering
             </div>
 
-            <span class="terminal-title">
-              felipe@sre:~
-            </span>
-          </div>
-
-          <div class="terminal-content">
-
-            <p class="command">
-              <span>$</span> whoami
-            </p>
-
-            <h1>
-              Felipe Sales de Oliveira
-            </h1>
-
-            <p class="command">
-              <span>$</span> cat role.txt
-            </p>
-
-            <p class="role">
-              Cloud, DevOps & SRE Consultant
-            </p>
-
-            <p class="command">
-              <span>$</span> cat bio.txt
-            </p>
-
+            <p class="hero-command"><span>$</span> whoami</p>
+            <h1>Felipe Sales<br /><span>de Oliveira</span></h1>
+            <p class="role">Cloud, DevOps & SRE Consultant</p>
             <p class="bio">
-              I design, automate and operate <strong>AWS</strong> and{" "}
+              I design, automate and operate <strong>AWS</strong> and
               <strong>Kubernetes</strong> environments using Infrastructure as Code,
-              CI/CD, GitOps and observability practices. My work focuses on reliable
-              delivery, production visibility and infrastructure that teams can
-              reproduce and maintain.
+              CI/CD, GitOps and observability practices.
             </p>
 
-            <p class="command connect">
-              <span>$</span> ./connect.sh
-            </p>
-
-            <div class="links">
-
-              <a
-                href="https://www.linkedin.com/in/felipesalesdeoliveira/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                LinkedIn
+            <div class="hero-actions">
+              <a class="primary-action" href={`${base}projects`}>
+                Explore technical cases <span>→</span>
               </a>
-
-              <a
-                href="https://github.com/felipesalesdeoliveira"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                GitHub
+              <a class="secondary-action" href={`${base}documents/felipe-sales-devops-engineer-en.pdf`} download>
+                Download résumé
               </a>
-
-              <a href="mailto:fesales.oliveira@gmail.com">
-                Email
-              </a>
-
-              <a href={`${base}documents/felipe-sales-devops-engineer-en.pdf`} download>
-                Résumé
-              </a>
-
             </div>
 
-            <div class="consulting-link">
-
-              <span class="consulting-label">
-                $ cat consulting.txt
-              </span>
-
-              <a
-                href="https://felipesalesdeoliveira.github.io/fso-cloud-consulting/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="consulting-button"
-              >
-                Visit FSO Cloud Consulting
-                <span>→</span>
-              </a>
-
+            <div class="hero-links" aria-label="Professional profiles">
+              <a href="https://www.linkedin.com/in/felipesalesdeoliveira/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a href="https://github.com/felipesalesdeoliveira" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="mailto:fesales.oliveira@gmail.com">Email</a>
             </div>
-
           </div>
 
+          <div class="hero-visual" aria-label="Cloud engineering status visualization">
+            <div class="motion-frame">
+              <div class="motion-topbar">
+                <div class="traffic-lights">
+                  <span class="red"></span>
+                  <span class="yellow"></span>
+                  <span class="green"></span>
+                </div>
+                <span class="motion-title">cloud-topology.live</span>
+                <span class="live-badge"><i></i> LIVE</span>
+              </div>
+
+              <div class="motion-stage">
+                <CloudScene />
+              </div>
+
+              <div class="motion-footer">
+                <div><strong>FSO TECHNICAL CLOUD</strong><span>Automate · Deploy · Observe</span></div>
+                <span class="infinity-mark">∞</span>
+              </div>
+            </div>
+
+            <a
+              href="https://felipesalesdeoliveira.github.io/fso-cloud-consulting/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="consulting-pill"
+            >
+              FSO Cloud Consulting <span>↗</span>
+            </a>
+          </div>
         </div>
       </section>
 
@@ -149,30 +130,52 @@ const base = import.meta.env.BASE_URL;
           <h2>Core Skills</h2>
         </div>
 
+        <p class="core-skills-intro">
+          Capabilities I apply across architecture, delivery and operations to build reliable cloud platforms.
+        </p>
+
         <div class="skills-grid">
 
           <article class="skill-card">
+            <div class="skill-card-head"><span class="skill-symbol">AWS</span><small>01</small></div>
             <h3>AWS Cloud Architecture</h3>
+            <p>Secure, resilient cloud foundations designed for scale, availability and controlled delivery.</p>
+            <div class="skill-tags"><span>VPC</span><span>IAM</span><span>CloudFront</span><span>Serverless</span></div>
           </article>
 
           <article class="skill-card">
+            <div class="skill-card-head"><span class="skill-symbol">IaC</span><small>02</small></div>
             <h3>Infrastructure as Code & Automation</h3>
+            <p>Repeatable infrastructure and operational workflows with reviewable, versioned automation.</p>
+            <div class="skill-tags"><span>Terraform</span><span>Ansible</span><span>Bash</span></div>
           </article>
 
           <article class="skill-card">
+            <div class="skill-card-head"><span class="skill-symbol">K8s</span><small>03</small></div>
             <h3>Kubernetes & Container Platforms</h3>
+            <p>Container platforms focused on safe workloads, declarative configuration and operability.</p>
+            <div class="skill-tags"><span>Docker</span><span>Helm</span><span>Argo CD</span></div>
           </article>
 
           <article class="skill-card">
+            <div class="skill-card-head"><span class="skill-symbol">CI</span><small>04</small></div>
             <h3>CI/CD & GitOps</h3>
+            <p>Automated software delivery with quality gates, traceability and Git-driven deployments.</p>
+            <div class="skill-tags"><span>GitHub Actions</span><span>Jenkins</span><span>GitLab CI</span></div>
           </article>
 
           <article class="skill-card">
+            <div class="skill-card-head"><span class="skill-symbol">SLO</span><small>05</small></div>
             <h3>Observability & Reliability Engineering</h3>
+            <p>Metrics, logs and traces transformed into actionable signals for reliable services.</p>
+            <div class="skill-tags"><span>Prometheus</span><span>Grafana</span><span>OpenTelemetry</span></div>
           </article>
 
           <article class="skill-card">
+            <div class="skill-card-head"><span class="skill-symbol">RCA</span><small>06</small></div>
             <h3>Incident Response & Troubleshooting</h3>
+            <p>Structured diagnosis, impact reduction and root-cause analysis across distributed systems.</p>
+            <div class="skill-tags"><span>Linux</span><span>Networking</span><span>Runbooks</span></div>
           </article>
 
         </div>
@@ -264,6 +267,10 @@ const base = import.meta.env.BASE_URL;
         <div class="section-title">
           <span>#</span>
           <h2>Tech Stack</h2>
+        </div>
+
+        <div class="stack-command" aria-label="Technology stack status">
+          <span>$</span> stack --load <i>//</i> <strong>ready</strong><b></b>
         </div>
 
         <div class="tech-groups">
@@ -551,11 +558,21 @@ const base = import.meta.env.BASE_URL;
           <h2>Certifications</h2>
         </div>
 
+        <p class="certifications-intro">
+          Validated foundations that support my hands-on work across cloud,
+          Linux systems and data platforms.
+        </p>
+
         <div class="certifications-grid">
 
           <!-- AWS -->
 
           <article class="cert-card">
+
+            <div class="cert-card-head">
+              <span class="cert-code">CERT-01</span>
+              <span class="cert-signal"><i></i> PROFILE RECORD</span>
+            </div>
 
             <div class="cert-icon">
               <img
@@ -586,6 +603,11 @@ const base = import.meta.env.BASE_URL;
 
           <article class="cert-card">
 
+            <div class="cert-card-head">
+              <span class="cert-code">CERT-02</span>
+              <span class="cert-signal"><i></i> PROFILE RECORD</span>
+            </div>
+
             <div class="cert-icon">
               <img
                 src={`${base}icons/linux.svg`}
@@ -613,6 +635,11 @@ const base = import.meta.env.BASE_URL;
           <!-- DATABRICKS -->
 
           <article class="cert-card">
+
+            <div class="cert-card-head">
+              <span class="cert-code">CERT-03</span>
+              <span class="cert-signal cert-signal--verified"><i></i> VERIFIED</span>
+            </div>
 
             <div class="cert-icon">
               <img
@@ -664,28 +691,45 @@ const base = import.meta.env.BASE_URL;
 
         <div class="contact-block">
 
-          <p class="contact-command">
-            $ ./connect.sh
-          </p>
+          <div class="contact-window-bar">
+            <div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+            <span>connect.fso</span>
+            <span class="contact-availability"><i></i> AVAILABLE</span>
+          </div>
 
-          <p class="contact-text">
-            For DevOps and SRE opportunities, technical collaboration or
-            consulting engagements involving AWS, Kubernetes, automation and
-            observability, choose the channel that best fits the conversation.
-          </p>
+          <div class="contact-layout">
 
-          <p class="contact-email">
-            fesales.oliveira@gmail.com
-          </p>
+            <div class="contact-copy">
+              <p class="contact-command"><span>$</span> ./connect.sh --open</p>
 
-          <div class="contact-links">
+              <h3>Let's engineer reliable systems.</h3>
+
+              <p class="contact-text">
+                For DevOps and SRE opportunities, technical collaboration or
+                consulting engagements involving AWS, Kubernetes, automation and
+                observability, choose the channel that best fits the conversation.
+              </p>
+
+              <div class="contact-email">
+                <span>PRIMARY_CHANNEL</span>
+                <a href="mailto:fesales.oliveira@gmail.com">fesales.oliveira@gmail.com</a>
+              </div>
+
+              <div class="contact-focus" aria-label="Professional focus">
+                <span>AWS</span><span>KUBERNETES</span><span>SRE</span><span>AUTOMATION</span>
+              </div>
+            </div>
+
+            <nav class="contact-links" aria-label="Contact channels">
 
             <a
               href="https://www.linkedin.com/in/felipesalesdeoliveira/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              LinkedIn
+                <span class="contact-link-icon">in</span>
+                <span><strong>LinkedIn</strong><small>Professional profile</small></span>
+                <b>↗</b>
             </a>
 
             <a
@@ -693,15 +737,21 @@ const base = import.meta.env.BASE_URL;
               target="_blank"
               rel="noopener noreferrer"
             >
-              GitHub
+                <span class="contact-link-icon">gh</span>
+                <span><strong>GitHub</strong><small>Code & infrastructure</small></span>
+                <b>↗</b>
             </a>
 
             <a href="mailto:fesales.oliveira@gmail.com">
-              Email
+                <span class="contact-link-icon">@</span>
+                <span><strong>Email</strong><small>Start a conversation</small></span>
+                <b>→</b>
             </a>
 
             <a href={`${base}documents/felipe-sales-devops-engineer-en.pdf`} download>
-              Download Résumé
+                <span class="contact-link-icon">cv</span>
+                <span><strong>Résumé</strong><small>Download PDF</small></span>
+                <b>↓</b>
             </a>
 
             <a
@@ -709,8 +759,12 @@ const base = import.meta.env.BASE_URL;
               target="_blank"
               rel="noopener noreferrer"
             >
-              Consulting
+                <span class="contact-link-icon">fso</span>
+                <span><strong>Consulting</strong><small>FSO Cloud Consulting</small></span>
+                <b>↗</b>
             </a>
+
+            </nav>
 
           </div>
 
@@ -1914,4 +1968,1644 @@ const base = import.meta.env.BASE_URL;
 
   }
 
+  /* =========================================================
+     FSO TECHNICAL DARK — REDESIGN PREVIEW
+  ========================================================= */
+
+  :global(:root) {
+    --fso-bg: #020617;
+    --fso-surface: rgba(7, 16, 31, 0.78);
+    --fso-surface-strong: #07101f;
+    --fso-border: rgba(96, 165, 250, 0.16);
+    --fso-blue: #3b82f6;
+    --fso-cyan: #22d3ee;
+    --fso-violet: #8b5cf6;
+    --fso-green: #36d399;
+    --fso-text: #f1f5f9;
+    --fso-muted: #94a3b8;
+  }
+
+  :global(html) {
+    background: var(--fso-bg);
+  }
+
+  :global(body) {
+    overflow-x: hidden;
+    background:
+      radial-gradient(circle at 8% 12%, rgba(37, 99, 235, 0.13), transparent 28%),
+      radial-gradient(circle at 92% 35%, rgba(139, 92, 246, 0.10), transparent 30%),
+      var(--fso-bg);
+    color: var(--fso-text);
+    font-family: "Geist", Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .container {
+    width: min(1320px, calc(100% - 48px));
+  }
+
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    padding: 128px 0 88px;
+    isolation: isolate;
+  }
+
+  .hero-layout {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 0.92fr) minmax(540px, 1.08fr);
+    align-items: center;
+    gap: clamp(42px, 5vw, 72px);
+  }
+
+  .hero-ambient,
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    opacity: 0.24;
+    background-image:
+      linear-gradient(rgba(96, 165, 250, 0.12) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(96, 165, 250, 0.12) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: linear-gradient(to bottom, transparent, black 20%, black 68%, transparent 96%);
+  }
+
+  .orb {
+    position: absolute;
+    border-radius: 999px;
+    filter: blur(110px);
+    opacity: 0.22;
+    animation: orb-drift 12s ease-in-out infinite alternate;
+  }
+
+  .orb-blue {
+    width: 460px;
+    height: 460px;
+    top: 6%;
+    right: 12%;
+    background: #2563eb;
+  }
+
+  .orb-violet {
+    width: 360px;
+    height: 360px;
+    right: -9%;
+    bottom: 8%;
+    background: #7c3aed;
+    animation-delay: -5s;
+  }
+
+  .particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--fso-cyan);
+    box-shadow: 0 0 18px 4px rgba(34, 211, 238, 0.5);
+    animation: particle-float 7s ease-in-out infinite;
+  }
+
+  .particle-one { left: 7%; top: 24%; }
+  .particle-two { left: 44%; top: 16%; animation-delay: -2s; }
+  .particle-three { right: 7%; top: 31%; animation-delay: -4s; }
+  .particle-four { right: 35%; bottom: 13%; animation-delay: -6s; }
+
+  .hero-copy {
+    position: relative;
+    z-index: 4;
+  }
+
+  .eyebrow {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    padding: 8px 13px;
+    border: 1px solid rgba(96, 165, 250, 0.22);
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.65);
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.035);
+    color: #cbd5e1;
+    font-family: "Geist Mono", monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    backdrop-filter: blur(16px);
+  }
+
+  .pulse-dot {
+    width: 7px;
+    height: 7px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: var(--fso-blue);
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.6);
+    animation: pulse 2.4s infinite;
+  }
+
+  .hero-command {
+    margin: 0 0 15px;
+    color: var(--fso-muted);
+    font-family: "Geist Mono", monospace;
+    font-size: 13px;
+  }
+
+  .hero-command span {
+    margin-right: 9px;
+    color: var(--fso-cyan);
+  }
+
+  .hero h1 {
+    margin: 0;
+    color: var(--fso-text);
+    font-family: "Geist", sans-serif;
+    font-size: clamp(48px, 6vw, 72px);
+    font-weight: 700;
+    line-height: 0.98;
+    letter-spacing: -0.055em;
+  }
+
+  .hero h1 span {
+    color: transparent;
+    background: linear-gradient(105deg, #60a5fa 5%, #22d3ee 48%, #a78bfa 96%);
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+
+  .hero .role {
+    margin: 28px 0 0;
+    color: #dbeafe;
+    font-family: "Geist", sans-serif;
+    font-size: clamp(19px, 2.2vw, 25px);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  .hero .bio {
+    max-width: 620px;
+    margin: 22px 0 0;
+    color: #94a3b8;
+    font-family: "Geist", sans-serif;
+    font-size: 17px;
+    line-height: 1.72;
+  }
+
+  .hero .bio strong {
+    color: #e2e8f0;
+    font-weight: 600;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px;
+    margin-top: 34px;
+  }
+
+  .hero-actions a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 0 20px;
+    border-radius: 11px;
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+
+  .primary-action {
+    border: 1px solid rgba(56, 189, 248, 0.42);
+    background: linear-gradient(105deg, #087af5, #2563eb 68%, #0ea5e9);
+    box-shadow: 0 14px 36px rgba(8, 122, 245, 0.27), inset 0 1px rgba(255, 255, 255, 0.16);
+  }
+
+  .secondary-action {
+    border: 1px solid rgba(96, 165, 250, 0.28);
+    background: linear-gradient(145deg, rgba(15, 28, 52, 0.82), rgba(7, 15, 31, 0.8));
+    color: #dbeafe !important;
+    backdrop-filter: blur(12px);
+  }
+
+  .hero-actions a:hover {
+    transform: translateY(-3px);
+    border-color: rgba(125, 211, 252, 0.48);
+    box-shadow: 0 18px 42px rgba(37, 99, 235, 0.30);
+  }
+
+  .hero-links {
+    display: flex;
+    gap: 22px;
+    margin-top: 24px;
+  }
+
+  .hero-links a {
+    position: relative;
+    color: #94a3b8;
+    font-family: "Geist Mono", monospace;
+    font-size: 11px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .hero-links a::before {
+    content: "";
+    width: 3px;
+    height: 3px;
+    display: inline-block;
+    margin: 0 7px 2px 0;
+    border-radius: 50%;
+    background: var(--fso-blue);
+  }
+
+  .hero-links a:hover { color: var(--fso-cyan); }
+
+  .hero-visual {
+    position: relative;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .architecture-ring {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border: 1px solid rgba(96, 165, 250, 0.15);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .ring-one { width: 440px; height: 440px; animation: ring-spin 32s linear infinite; }
+  .ring-two { width: 340px; height: 340px; border-color: rgba(167, 139, 250, 0.16); animation: ring-spin 24s linear infinite reverse; }
+
+  .architecture-ring::before,
+  .architecture-ring::after {
+    content: "";
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--fso-cyan);
+    box-shadow: 0 0 16px 4px rgba(34, 211, 238, 0.38);
+  }
+
+  .architecture-ring::before { left: 13%; top: 13%; }
+  .architecture-ring::after { right: 8%; bottom: 22%; background: var(--fso-violet); }
+
+  .architecture-line {
+    position: absolute;
+    z-index: 0;
+    width: 320px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.42), transparent);
+    transform-origin: center;
+  }
+
+  .line-one { transform: rotate(35deg); }
+  .line-two { transform: rotate(-38deg); }
+
+  .signal-card {
+    position: absolute;
+    z-index: 4;
+    width: 128px;
+    padding: 14px;
+    border: 1px solid rgba(96, 165, 250, 0.18);
+    border-radius: 14px;
+    background: rgba(7, 16, 31, 0.73);
+    box-shadow: 0 18px 40px rgba(2, 6, 23, 0.35), inset 0 1px rgba(255,255,255,0.04);
+    backdrop-filter: blur(18px);
+    animation: card-float 6s ease-in-out infinite;
+  }
+
+  .signal-card .signal-icon {
+    display: block;
+    margin-bottom: 6px;
+    color: #7dd3fc;
+    font-family: "Geist Mono", monospace;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .signal-card small {
+    color: #94a3b8;
+    font-size: 10px;
+    line-height: 1.3;
+  }
+
+  .signal-aws { left: -5px; top: 54px; }
+  .signal-k8s { right: -10px; top: 110px; animation-delay: -2s; }
+  .signal-obs { right: 8px; bottom: 65px; animation-delay: -4s; }
+
+  .hero .terminal-window {
+    position: relative;
+    z-index: 3;
+    width: min(100%, 410px);
+    margin: 0;
+    border: 1px solid rgba(96, 165, 250, 0.22);
+    border-radius: 18px;
+    background: rgba(4, 10, 22, 0.88);
+    box-shadow:
+      0 34px 80px rgba(2, 6, 23, 0.62),
+      0 0 70px rgba(37, 99, 235, 0.13),
+      inset 0 1px rgba(255,255,255,0.04);
+    backdrop-filter: blur(20px);
+  }
+
+  .hero .terminal-header {
+    height: 48px;
+    padding: 0 17px;
+    border-bottom-color: rgba(96, 165, 250, 0.13);
+    background: rgba(15, 23, 42, 0.76);
+  }
+
+  .hero .traffic-lights span { width: 9px; height: 9px; }
+
+  .hero .terminal-title {
+    margin-left: 18px;
+    color: #64748b;
+    font-family: "Geist Mono", monospace;
+    font-size: 10px;
+  }
+
+  .hero .terminal-content {
+    padding: 27px 26px 25px;
+    font-family: "Geist Mono", monospace;
+  }
+
+  .terminal-command {
+    margin: 0 0 22px;
+    color: #cbd5e1;
+    font-size: 11px;
+  }
+
+  .terminal-command span { color: var(--fso-cyan); }
+
+  .terminal-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 18px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(96, 165, 250, 0.09);
+    color: #94a3b8;
+    font-size: 10px;
+  }
+
+  .terminal-row strong {
+    color: var(--fso-green);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+  }
+
+  .terminal-labels {
+    padding-top: 0;
+    color: #475569;
+    font-size: 8px;
+    letter-spacing: 0.12em;
+  }
+
+  .terminal-foot {
+    margin: 18px 0 0;
+    color: #64748b;
+    font-size: 9px;
+  }
+
+  .terminal-foot span {
+    width: 6px;
+    height: 6px;
+    display: inline-block;
+    margin-right: 7px;
+    border-radius: 50%;
+    background: var(--fso-green);
+    box-shadow: 0 0 12px rgba(54, 211, 153, 0.7);
+  }
+
+  /* Animated cloud topology */
+
+  .motion-frame {
+    position: relative;
+    z-index: 2;
+    inset: auto;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid rgba(96, 165, 250, 0.2);
+    border-radius: 20px;
+    background: rgba(4, 10, 24, 0.76);
+    box-shadow:
+      0 35px 90px rgba(2, 6, 23, 0.56),
+      0 0 80px rgba(37, 99, 235, 0.11),
+      inset 0 1px rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(22px);
+  }
+
+  .motion-topbar {
+    height: 46px;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    border-bottom: 1px solid rgba(96, 165, 250, 0.11);
+    background: rgba(15, 23, 42, 0.65);
+  }
+
+  .motion-frame .traffic-lights span {
+    width: 8px;
+    height: 8px;
+  }
+
+  .motion-title {
+    margin-left: 16px;
+    color: #64748b;
+    font-family: "Geist Mono", monospace;
+    font-size: 9px;
+  }
+
+  .live-badge {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #86efac;
+    font-family: "Geist Mono", monospace;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+  }
+
+  .live-badge i {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--fso-green);
+    box-shadow: 0 0 10px rgba(54, 211, 153, 0.78);
+    animation: live-blink 1.8s ease-in-out infinite;
+  }
+
+  .motion-stage {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+  }
+
+  .stage-grid,
+  .stage-glow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .stage-grid {
+    opacity: 0.23;
+    background-image:
+      linear-gradient(rgba(96, 165, 250, 0.13) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(96, 165, 250, 0.13) 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: radial-gradient(circle at center, black, transparent 84%);
+  }
+
+  .stage-glow {
+    left: 50%;
+    top: 50%;
+    width: 280px;
+    height: 280px;
+    inset: auto;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.24), rgba(124, 58, 237, 0.08) 48%, transparent 72%);
+    filter: blur(24px);
+    transform: translate(-50%, -50%);
+    animation: stage-breathe 5s ease-in-out infinite;
+  }
+
+  .topology-animation {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .data-path {
+    fill: none;
+    stroke: url(#topology-blue);
+    stroke-width: 1.25;
+    stroke-dasharray: 5 8;
+    opacity: 0.4;
+    animation: data-stream 5s linear infinite;
+  }
+
+  .path-two { animation-delay: -1s; }
+  .path-three { animation-delay: -2s; }
+  .path-four { animation-delay: -3s; }
+
+  .globe-aura {
+    fill: rgba(37, 99, 235, 0.035);
+    stroke: rgba(96, 165, 250, 0.1);
+    stroke-width: 1;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: aura-pulse 4.5s ease-in-out infinite;
+  }
+
+  .globe-edge {
+    fill: url(#core-fill);
+    stroke: url(#topology-blue);
+    stroke-width: 1.3;
+    opacity: 0.9;
+    filter: drop-shadow(0 0 18px rgba(59, 130, 246, 0.2));
+  }
+
+  .globe-spin {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: globe-turn 16s linear infinite;
+  }
+
+  .globe-line {
+    fill: none;
+    stroke: rgba(125, 211, 252, 0.34);
+    stroke-width: 1;
+  }
+
+  .globe-line-soft {
+    stroke: rgba(167, 139, 250, 0.2);
+  }
+
+  .globe-pulse {
+    fill: none;
+    stroke: rgba(34, 211, 238, 0.34);
+    stroke-width: 1;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: topology-pulse 3.6s ease-out infinite;
+  }
+
+  .globe-pulse-two {
+    stroke: rgba(167, 139, 250, 0.32);
+    animation-delay: -1.8s;
+  }
+
+  .core-node polygon {
+    fill: rgba(8, 20, 44, 0.92);
+    stroke: url(#topology-blue);
+    stroke-width: 1.4;
+  }
+
+  .core-node text {
+    fill: #e0f2fe;
+    font-family: "Geist Mono", monospace;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+  }
+
+  .core-node .core-subtitle {
+    fill: #64748b;
+    font-size: 6px;
+    letter-spacing: 0.24em;
+  }
+
+  .service-node {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: service-float 5s ease-in-out infinite;
+  }
+
+  .service-node circle {
+    fill: rgba(7, 16, 31, 0.94);
+    stroke: rgba(96, 165, 250, 0.38);
+    stroke-width: 1.2;
+    filter: drop-shadow(0 10px 16px rgba(2, 6, 23, 0.46));
+  }
+
+  .service-node text {
+    fill: #7dd3fc;
+    font-family: "Geist Mono", monospace;
+    font-size: 10px;
+    font-weight: 600;
+  }
+
+  .node-k8s { animation-delay: -1.25s; }
+  .node-iac { animation-delay: -2.5s; }
+  .node-otel { animation-delay: -3.75s; }
+
+  .packet {
+    fill: #67e8f9;
+    filter: url(#topology-glow);
+  }
+
+  .packet-two,
+  .packet-four { fill: #a78bfa; }
+
+  .telemetry {
+    position: absolute;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 9px;
+    border: 1px solid rgba(96, 165, 250, 0.14);
+    border-radius: 7px;
+    background: rgba(4, 10, 24, 0.78);
+    color: #64748b;
+    font-family: "Geist Mono", monospace;
+    font-size: 7px;
+    backdrop-filter: blur(10px);
+  }
+
+  .telemetry span {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--fso-green);
+    box-shadow: 0 0 8px rgba(54, 211, 153, 0.62);
+  }
+
+  .telemetry-one { left: 14px; top: 48%; }
+  .telemetry-two { right: 14px; top: 39%; }
+
+  .motion-footer {
+    height: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    border-top: 1px solid rgba(96, 165, 250, 0.1);
+    background: rgba(15, 23, 42, 0.56);
+  }
+
+  .motion-footer div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .motion-footer strong,
+  .motion-footer span {
+    font-family: "Geist Mono", monospace;
+  }
+
+  .motion-footer strong {
+    color: #7dd3fc;
+    font-size: 7px;
+    letter-spacing: 0.11em;
+  }
+
+  .motion-footer div span {
+    color: #475569;
+    font-size: 7px;
+  }
+
+  .motion-footer .infinity-mark {
+    color: #a78bfa;
+    font-size: 19px;
+  }
+
+  .hero .terminal-window {
+    position: absolute;
+    z-index: 6;
+    right: -18px;
+    bottom: 18px;
+    width: 330px;
+    transform: scale(0.86);
+    transform-origin: right bottom;
+  }
+
+  .consulting-pill {
+    position: relative;
+    z-index: 5;
+    left: auto;
+    bottom: auto;
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0 0 20px;
+    padding: 11px 14px;
+    border: 1px solid rgba(56, 189, 248, 0.28);
+    border-radius: 11px;
+    background: rgba(15, 23, 42, 0.82);
+    box-shadow: 0 15px 35px rgba(2, 6, 23, 0.42);
+    color: #bae6fd;
+    font-size: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    backdrop-filter: blur(16px);
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+
+  .consulting-pill:hover { transform: translateY(-3px); border-color: rgba(103, 232, 249, 0.6); }
+
+  .section {
+    position: relative;
+    padding: 88px 0;
+  }
+
+  .section-title {
+    gap: 14px;
+    padding-bottom: 18px;
+    border-bottom-color: rgba(96, 165, 250, 0.12);
+  }
+
+  .section-title::before {
+    content: "";
+    width: 34px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--fso-blue));
+  }
+
+  .section-title span { color: var(--fso-cyan); font-family: "Geist Mono", monospace; font-size: 21px; }
+  .section-title h2 { color: var(--fso-text); font-family: "Geist", sans-serif; font-size: clamp(28px, 4vw, 40px); letter-spacing: -0.035em; }
+  .section-intro { color: var(--fso-muted); font-family: "Geist", sans-serif; }
+
+  .skill-card,
+  .featured-project-card,
+  .tech-card,
+  .cert-card,
+  .contact-block {
+    border-color: var(--fso-border);
+    background:
+      linear-gradient(145deg, rgba(15, 23, 42, 0.83), rgba(5, 12, 26, 0.76));
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.025), 0 18px 45px rgba(2, 6, 23, 0.18);
+    backdrop-filter: blur(16px);
+  }
+
+  .skill-card,
+  .featured-project-card,
+  .tech-card,
+  .cert-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .skill-card::before,
+  .featured-project-card::before,
+  .cert-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.65), rgba(167, 139, 250, 0.5), transparent);
+    opacity: 0.55;
+  }
+
+  .skill-card:hover,
+  .featured-project-card:hover,
+  .tech-card:hover,
+  .cert-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(96, 165, 250, 0.42);
+    background: linear-gradient(145deg, rgba(18, 35, 65, 0.9), rgba(8, 17, 35, 0.86));
+    box-shadow: 0 24px 58px rgba(2, 6, 23, 0.4), 0 0 34px rgba(37, 99, 235, 0.08);
+  }
+
+  .skill-card h3,
+  .featured-project-card h3,
+  .cert-content h3 { font-family: "Geist", sans-serif; }
+
+  .featured-project-meta,
+  .featured-project-card a,
+  .all-projects-link,
+  .tech-group-title,
+  .cert-issuer,
+  .cert-status,
+  .contact-command { font-family: "Geist Mono", monospace; }
+
+  .featured-project-meta,
+  .featured-project-card a,
+  .all-projects-link,
+  .tech-group-title,
+  .contact-command { color: var(--fso-cyan); }
+
+  .status-completed { color: var(--fso-green); }
+  .status-progress { color: #fbbf24; }
+
+  .tech-card img { filter: saturate(0.9); transition: transform 0.3s ease, filter 0.3s ease; }
+  .tech-card:hover img { transform: scale(1.1); filter: saturate(1.15) drop-shadow(0 8px 16px rgba(59,130,246,.18)); }
+
+  /* Capability cards: outcomes first, tools as supporting evidence */
+
+  .core-skills-intro {
+    max-width: 760px;
+    margin: 24px 0 0;
+    color: var(--fso-muted);
+    font-family: "Geist", sans-serif;
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  .skills-grid {
+    gap: 16px;
+    margin-top: 34px;
+  }
+
+  .skill-card {
+    --skill-accent: 96, 165, 250;
+    min-height: 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 22px;
+    text-align: left;
+    isolation: isolate;
+  }
+
+  .skill-card:nth-child(2),
+  .skill-card:nth-child(5) { --skill-accent: 34, 211, 238; }
+
+  .skill-card:nth-child(3),
+  .skill-card:nth-child(6) { --skill-accent: 167, 139, 250; }
+
+  .skill-card::before {
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(var(--skill-accent), 0.95),
+      transparent
+    );
+    opacity: 0.75;
+    transform: translateX(-38%);
+    transition: opacity 0.3s ease, transform 0.55s ease;
+  }
+
+  .skill-card::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -80px;
+    right: -70px;
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(var(--skill-accent), 0.13), transparent 68%);
+    opacity: 0.65;
+    transition: opacity 0.3s ease, transform 0.45s ease;
+  }
+
+  .skill-card:hover {
+    border-color: rgba(var(--skill-accent), 0.48);
+    box-shadow:
+      0 24px 58px rgba(2, 6, 23, 0.4),
+      0 0 34px rgba(var(--skill-accent), 0.09);
+  }
+
+  .skill-card:hover::before { opacity: 1; transform: translateX(38%); }
+  .skill-card:hover::after { opacity: 1; transform: scale(1.16); }
+
+  .skill-card-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .skill-symbol {
+    width: 50px;
+    height: 50px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(var(--skill-accent), 0.32);
+    border-radius: 13px;
+    color: rgb(var(--skill-accent));
+    background:
+      linear-gradient(145deg, rgba(var(--skill-accent), 0.13), rgba(var(--skill-accent), 0.035));
+    box-shadow:
+      inset 0 1px rgba(255, 255, 255, 0.06),
+      0 0 24px rgba(var(--skill-accent), 0.08);
+    font-family: "Geist Mono", monospace;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .skill-card:hover .skill-symbol {
+    transform: translateY(-3px) rotate(-2deg);
+    box-shadow:
+      inset 0 1px rgba(255, 255, 255, 0.08),
+      0 0 28px rgba(var(--skill-accent), 0.16);
+  }
+
+  .skill-card-head small {
+    color: rgba(var(--skill-accent), 0.58);
+    font-family: "Geist Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+  }
+
+  .skill-card h3 {
+    margin: 22px 0 10px;
+    color: #eef4ff;
+    font-size: 18px;
+    font-weight: 650;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+  }
+
+  .skill-card > p {
+    flex: 1;
+    margin: 0;
+    color: #8fa0ba;
+    font-family: "Geist", sans-serif;
+    font-size: 13px;
+    line-height: 1.68;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 20px;
+  }
+
+  .skill-tags span {
+    padding: 5px 8px;
+    border: 1px solid rgba(var(--skill-accent), 0.16);
+    border-radius: 6px;
+    color: #91a4c0;
+    background: rgba(var(--skill-accent), 0.045);
+    font-family: "Geist Mono", monospace;
+    font-size: 9px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.025em;
+  }
+
+  /* Skills-inspired technology groups */
+
+  .stack-command {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin: 16px 0 0 48px;
+    color: #64748b;
+    font-family: "Geist Mono", monospace;
+    font-size: 11px;
+  }
+
+  .stack-command span { color: #60a5fa; }
+  .stack-command i { color: #334155; font-style: normal; }
+  .stack-command strong { color: #34d399; font-weight: 500; }
+
+  .stack-command b {
+    width: 6px;
+    height: 13px;
+    display: inline-block;
+    background: #60a5fa;
+    animation: stack-cursor 1s steps(1) infinite;
+  }
+
+  .tech-groups {
+    gap: 18px;
+    margin-top: 34px;
+  }
+
+  .tech-group {
+    position: relative;
+    overflow: hidden;
+    padding: 22px;
+    border: 1px solid rgba(96, 165, 250, 0.14);
+    border-radius: 18px;
+    background: linear-gradient(145deg, rgba(8, 18, 37, 0.84), rgba(4, 10, 24, 0.78));
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.025), 0 18px 45px rgba(2, 6, 23, 0.2);
+    backdrop-filter: blur(18px);
+  }
+
+  .tech-group::before {
+    content: "";
+    position: absolute;
+    left: -180px;
+    top: 0;
+    width: 180px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+    animation: skill-line-pass 7s ease-in-out infinite;
+  }
+
+  .tech-group-title {
+    position: relative;
+    min-height: 42px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 0 18px;
+    padding-left: 54px;
+    color: #e2e8f0;
+    font-family: "Geist", sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .tech-group-title::before {
+    content: "<>";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    border-radius: 11px;
+    background: rgba(37, 99, 235, 0.1);
+    color: #60a5fa;
+    font-family: "Geist Mono", monospace;
+    font-size: 12px;
+  }
+
+  .tech-group-title::after {
+    margin-top: 3px;
+    color: #475569;
+    font-family: "Geist", sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+  }
+
+  .tech-group:nth-child(1) .tech-group-title::after { content: "Cloud infrastructure & architecture"; }
+  .tech-group:nth-child(2) .tech-group-title::after { content: "Containers, orchestration & platform engineering"; }
+  .tech-group:nth-child(3) .tech-group-title::after { content: "Infrastructure as Code & systems automation"; }
+  .tech-group:nth-child(4) .tech-group-title::after { content: "Continuous delivery & version control"; }
+  .tech-group:nth-child(5) .tech-group-title::after { content: "Metrics, logs, traces & reliability signals"; }
+  .tech-group:nth-child(6) .tech-group-title::after { content: "Supporting platforms and operational tools"; }
+
+  .tech-group-description { display: none; }
+
+  .additional-stack {
+    padding-top: 22px;
+    border-top-color: rgba(96, 165, 250, 0.14);
+  }
+
+  .tech-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .tech-card,
+  .additional-stack .tech-card {
+    min-height: 76px;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 12px;
+    padding: 12px;
+    border-color: rgba(71, 85, 105, 0.45);
+    border-radius: 12px;
+    background: rgba(2, 6, 23, 0.72);
+    opacity: 1;
+  }
+
+  .tech-card::before {
+    content: "";
+    position: absolute;
+    left: 68px;
+    bottom: 17px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #34d399;
+    box-shadow: 0 0 8px rgba(52, 211, 153, 0.7);
+  }
+
+  .tech-card::after {
+    content: "active";
+    position: absolute;
+    left: 79px;
+    bottom: 14px;
+    color: #475569;
+    font-family: "Geist Mono", monospace;
+    font-size: 8px;
+  }
+
+  .tech-card img,
+  .tech-card img.aws-icon {
+    width: 46px;
+    height: 46px;
+    flex: 0 0 auto;
+    padding: 9px;
+    border: 1px solid rgba(71, 85, 105, 0.45);
+    border-radius: 11px;
+    background: #030712;
+    object-fit: contain;
+  }
+
+  .tech-card span {
+    align-self: flex-start;
+    margin-top: 8px;
+    overflow: hidden;
+    color: #cbd5e1;
+    font-family: "Geist", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  @keyframes stack-cursor {
+    50% { opacity: 0; }
+  }
+
+  @keyframes skill-line-pass {
+    0%, 15% { left: -180px; opacity: 0; }
+    35%, 70% { opacity: 0.9; }
+    100% { left: calc(100% + 40px); opacity: 0; }
+  }
+
+  /* Certifications: compact credential records */
+
+  .certifications-intro {
+    max-width: 720px;
+    margin: 24px 0 0;
+    color: var(--fso-muted);
+    font-family: "Geist", sans-serif;
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  .certifications-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 34px;
+  }
+
+  .cert-card {
+    --cert-accent: 96, 165, 250;
+    min-height: 245px;
+    display: grid;
+    grid-template-columns: 62px minmax(0, 1fr);
+    align-content: start;
+    align-items: center;
+    gap: 20px 16px;
+    padding: 20px;
+    isolation: isolate;
+  }
+
+  .cert-card:nth-child(2) { --cert-accent: 34, 211, 238; }
+  .cert-card:nth-child(3) { --cert-accent: 167, 139, 250; }
+
+  .cert-card::before {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(var(--cert-accent), 0.92), transparent);
+  }
+
+  .cert-card::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    right: -70px;
+    bottom: -85px;
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(var(--cert-accent), 0.12), transparent 68%);
+    transition: transform 0.4s ease, opacity 0.3s ease;
+  }
+
+  .cert-card:hover {
+    border-color: rgba(var(--cert-accent), 0.45);
+    box-shadow: 0 24px 58px rgba(2, 6, 23, 0.4), 0 0 32px rgba(var(--cert-accent), 0.08);
+  }
+
+  .cert-card:hover::after { transform: scale(1.18); }
+
+  .cert-card-head {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(var(--cert-accent), 0.1);
+  }
+
+  .cert-code,
+  .cert-signal {
+    font-family: "Geist Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+  }
+
+  .cert-code { color: rgba(var(--cert-accent), 0.72); }
+
+  .cert-signal {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: #64748b;
+  }
+
+  .cert-signal i {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #60a5fa;
+    box-shadow: 0 0 10px rgba(96, 165, 250, 0.65);
+  }
+
+  .cert-signal--verified { color: #6ee7b7; }
+  .cert-signal--verified i { background: #34d399; box-shadow: 0 0 10px rgba(52, 211, 153, 0.7); }
+
+  .cert-icon {
+    width: 62px;
+    height: 62px;
+    border-color: rgba(var(--cert-accent), 0.24);
+    border-radius: 14px;
+    background: linear-gradient(145deg, rgba(var(--cert-accent), 0.11), rgba(var(--cert-accent), 0.025));
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.05), 0 0 24px rgba(var(--cert-accent), 0.07);
+  }
+
+  .cert-icon img { filter: saturate(0.9); transition: transform 0.3s ease, filter 0.3s ease; }
+  .cert-card:hover .cert-icon img { transform: scale(1.08); filter: saturate(1.15); }
+
+  .cert-content { align-self: center; }
+
+  .cert-issuer {
+    margin-bottom: 8px;
+    color: rgb(var(--cert-accent));
+    font-size: 9px;
+    letter-spacing: 0.12em;
+  }
+
+  .cert-content h3 {
+    min-height: 46px;
+    margin: 0 0 13px;
+    color: #eef4ff;
+    font-size: 16px;
+    font-weight: 650;
+    line-height: 1.4;
+    letter-spacing: -0.015em;
+  }
+
+  .cert-status,
+  .cert-content a {
+    color: #74859f;
+    font-family: "Geist Mono", monospace;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+  }
+
+  .cert-content a { color: #6ee7b7; }
+
+  /* Contact: terminal shell and channel directory */
+
+  .contact-block {
+    position: relative;
+    overflow: hidden;
+    margin-top: 34px;
+    padding: 0;
+    border-radius: 20px;
+  }
+
+  .contact-block::before {
+    content: "";
+    position: absolute;
+    right: -150px;
+    bottom: -190px;
+    width: 520px;
+    height: 520px;
+    border: 1px solid rgba(167, 139, 250, 0.11);
+    border-radius: 50%;
+    box-shadow: 0 0 90px rgba(99, 102, 241, 0.06), inset 0 0 80px rgba(59, 130, 246, 0.035);
+    pointer-events: none;
+  }
+
+  .contact-window-bar {
+    min-height: 54px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 16px;
+    padding: 0 20px;
+    border-bottom: 1px solid rgba(96, 165, 250, 0.12);
+    color: #52617a;
+    background: rgba(5, 11, 24, 0.68);
+    font-family: "Geist Mono", monospace;
+    font-size: 10px;
+  }
+
+  .window-dots { display: flex; gap: 7px; }
+  .window-dots i { width: 8px; height: 8px; border-radius: 50%; background: #fb7185; }
+  .window-dots i:nth-child(2) { background: #fbbf24; }
+  .window-dots i:nth-child(3) { background: #34d399; }
+
+  .contact-availability {
+    justify-self: end;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #6ee7b7;
+  }
+
+  .contact-availability i {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #34d399;
+    box-shadow: 0 0 12px rgba(52, 211, 153, 0.8);
+    animation: live-blink 2.2s ease-in-out infinite;
+  }
+
+  .contact-layout {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.12fr) minmax(340px, 0.88fr);
+    gap: 54px;
+    padding: 42px;
+  }
+
+  .contact-copy { max-width: 690px; }
+
+  .contact-command {
+    margin: 0 0 24px;
+    color: #91a4c0;
+    font-size: 11px;
+  }
+
+  .contact-command span { color: var(--fso-cyan); }
+
+  .contact-copy h3 {
+    max-width: 620px;
+    margin: 0 0 18px;
+    color: #f1f5ff;
+    font-family: "Geist", sans-serif;
+    font-size: clamp(30px, 4vw, 48px);
+    font-weight: 720;
+    line-height: 1.08;
+    letter-spacing: -0.045em;
+  }
+
+  .contact-text {
+    max-width: 650px;
+    color: #8fa0ba;
+    font-family: "Geist", sans-serif;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .contact-email {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7px;
+    margin: 24px 0 0;
+  }
+
+  .contact-email span {
+    color: #52617a;
+    font-family: "Geist Mono", monospace;
+    font-size: 8px;
+    letter-spacing: 0.14em;
+  }
+
+  .contact-email a {
+    color: #67e8f9;
+    font-family: "Geist Mono", monospace;
+    font-size: 13px;
+    text-decoration: none;
+  }
+
+  .contact-focus {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 26px;
+  }
+
+  .contact-focus span {
+    padding: 5px 8px;
+    border: 1px solid rgba(96, 165, 250, 0.15);
+    border-radius: 6px;
+    color: #71839e;
+    background: rgba(59, 130, 246, 0.04);
+    font-family: "Geist Mono", monospace;
+    font-size: 8px;
+    letter-spacing: 0.07em;
+  }
+
+  .contact-links {
+    display: grid;
+    align-content: start;
+    gap: 9px;
+    margin: 0;
+  }
+
+  .contact-links a {
+    min-width: 0;
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr) auto;
+    align-items: center;
+    justify-content: initial;
+    gap: 12px;
+    padding: 11px 13px;
+    border-color: rgba(96, 165, 250, 0.13);
+    border-radius: 11px;
+    background: rgba(8, 17, 35, 0.6);
+    text-align: left;
+  }
+
+  .contact-links a:hover {
+    transform: translateX(4px);
+    border-color: rgba(103, 232, 249, 0.42);
+    background: rgba(15, 31, 57, 0.82);
+    color: inherit;
+  }
+
+  .contact-link-icon {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(96, 165, 250, 0.2);
+    border-radius: 9px;
+    color: #60a5fa;
+    background: rgba(59, 130, 246, 0.07);
+    font-family: "Geist Mono", monospace;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .contact-links a > span:nth-child(2) {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .contact-links strong {
+    color: #dce7f8;
+    font-family: "Geist", sans-serif;
+    font-size: 12px;
+    font-weight: 650;
+  }
+
+  .contact-links small {
+    overflow: hidden;
+    color: #5f708b;
+    font-family: "Geist Mono", monospace;
+    font-size: 8px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .contact-links b {
+    color: #52617a;
+    font-family: "Geist Mono", monospace;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .contact-links a:hover b { color: #67e8f9; }
+
+  @keyframes orb-drift {
+    to { transform: translate3d(35px, 24px, 0) scale(1.08); }
+  }
+
+  @keyframes live-blink {
+    0%, 100% { opacity: 0.42; transform: scale(0.88); }
+    50% { opacity: 1; transform: scale(1.12); }
+  }
+
+  @keyframes stage-breathe {
+    0%, 100% { opacity: 0.68; transform: translate(-50%, -50%) scale(0.92); }
+    50% { opacity: 1; transform: translate(-50%, -50%) scale(1.12); }
+  }
+
+  @keyframes data-stream {
+    to { stroke-dashoffset: -52; }
+  }
+
+  @keyframes globe-turn {
+    0% { transform: perspective(500px) rotateY(0deg) rotateZ(0deg); }
+    50% { transform: perspective(500px) rotateY(180deg) rotateZ(2deg); }
+    100% { transform: perspective(500px) rotateY(360deg) rotateZ(0deg); }
+  }
+
+  @keyframes topology-pulse {
+    0% { opacity: 0.65; transform: scale(0.72); }
+    80%, 100% { opacity: 0; transform: scale(1.55); }
+  }
+
+  @keyframes aura-pulse {
+    0%, 100% { opacity: 0.4; transform: scale(0.92); }
+    50% { opacity: 0.9; transform: scale(1.08); }
+  }
+
+  @keyframes service-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  @keyframes particle-float {
+    0%, 100% { transform: translateY(0); opacity: 0.35; }
+    50% { transform: translateY(-18px); opacity: 1; }
+  }
+
+  @keyframes card-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-9px); }
+  }
+
+  @keyframes ring-spin {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  @keyframes pulse {
+    70% { box-shadow: 0 0 0 8px rgba(59, 130, 246, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+  }
+
+  @media (max-width: 960px) {
+    .hero-layout { grid-template-columns: 1fr; gap: 36px; }
+    .hero-copy { max-width: 720px; }
+    .hero-visual { width: min(100%, 610px); min-height: 530px; margin: 0 auto; }
+    .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .tech-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .certifications-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .cert-card { grid-template-columns: 52px minmax(0, 1fr); gap: 18px 13px; padding: 18px; }
+    .cert-icon { width: 52px; height: 52px; }
+    .cert-card-head { align-items: flex-start; }
+    .cert-signal { line-height: 1.4; text-align: right; }
+    .contact-layout { grid-template-columns: 1fr; gap: 36px; }
+    .contact-links { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .signal-aws { left: 0; }
+    .signal-k8s { right: 0; }
+    .signal-obs { right: 2%; }
+  }
+
+  @media (max-width: 700px) {
+    .container { width: min(100% - 32px, 1180px); }
+    .hero { padding: 112px 0 64px; }
+    .hero h1 { font-size: clamp(43px, 14vw, 60px); }
+    .hero .bio { font-size: 15px; }
+    .eyebrow { max-width: 100%; font-size: 8px; letter-spacing: 0.08em; }
+    .hero-actions { flex-direction: column; }
+    .hero-actions a { width: 100%; }
+    .hero-links { justify-content: center; }
+    .hero-visual { min-height: 460px; }
+    .ring-one { width: 340px; height: 340px; }
+    .ring-two { width: 270px; height: 270px; }
+    .signal-card { display: none; }
+    .motion-frame { inset: 0 0 48px; }
+    .motion-stage { min-height: 330px; }
+    .motion-footer div span { display: none; }
+    .telemetry { display: none; }
+    .hero .terminal-window { display: none; }
+    .consulting-pill { align-self: center; left: auto; bottom: auto; margin: 10px 0 0; transform: none; white-space: nowrap; }
+    .consulting-pill:hover { transform: translateY(-3px); }
+    .skills-grid { grid-template-columns: 1fr; gap: 12px; }
+    .skill-card { min-height: 235px; padding: 20px; }
+    .skill-card h3 { font-size: 17px; }
+    .certifications-grid { grid-template-columns: 1fr; gap: 12px; }
+    .cert-card { min-height: 210px; padding: 18px; }
+    .contact-window-bar { grid-template-columns: 1fr auto; }
+    .contact-window-bar > span:nth-child(2) { display: none; }
+    .contact-layout { padding: 28px 20px; }
+    .contact-copy h3 { font-size: 32px; }
+    .contact-links { grid-template-columns: 1fr; gap: 8px; }
+    .contact-links a { width: 100%; padding: 10px 12px; }
+    .stack-command { margin-left: 0; }
+    .tech-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .tech-group { padding: 18px; }
+    .section { padding: 68px 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .orb,
+    .particle,
+    .pulse-dot,
+    .architecture-ring,
+    .signal-card,
+    .live-badge i,
+    .stage-glow,
+    .globe-spin,
+    .globe-pulse,
+    .globe-aura,
+    .service-node,
+    .data-path { animation: none !important; }
+
+    .packet { display: none; }
+
+    *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+  }
 </style>

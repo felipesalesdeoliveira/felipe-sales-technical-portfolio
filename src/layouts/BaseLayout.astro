@@ -1,5 +1,6 @@
 ---
 import Header from "../components/Header.astro";
+import "../styles/portfolio-theme.css";
 
 const base = import.meta.env.BASE_URL;
 
@@ -26,6 +27,9 @@ const canonical = new URL(
 
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
@@ -45,51 +49,73 @@ const canonical = new URL(
 </html>
 
 <style is:global>
+  :root {
+    --fso-bg: #020617;
+    --fso-surface: rgba(7, 16, 31, 0.78);
+    --fso-border: rgba(96, 165, 250, 0.16);
+    --fso-blue: #3b82f6;
+    --fso-cyan: #22d3ee;
+    --fso-violet: #8b5cf6;
+    --fso-green: #36d399;
+    --fso-text: #f1f5f9;
+    --fso-muted: #94a3b8;
+  }
+
   * {
     box-sizing: border-box;
   }
 
   html {
     scroll-behavior: smooth;
-    background: #080b0c;
+    background: var(--fso-bg);
   }
 
   body {
     margin: 0;
     min-height: 100vh;
 
+    overflow-x: hidden;
     background:
-      radial-gradient(
-        circle at top right,
-        rgba(54, 211, 153, 0.045),
-        transparent 32%
-      ),
-      #080b0c;
+      linear-gradient(rgba(96, 165, 250, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(96, 165, 250, 0.045) 1px, transparent 1px),
+      radial-gradient(circle at 12% 8%, rgba(37, 99, 235, 0.14), transparent 28%),
+      radial-gradient(circle at 90% 30%, rgba(124, 58, 237, 0.10), transparent 30%),
+      var(--fso-bg);
 
-    color: #e5e7e8;
+    background-size: 72px 72px, 72px 72px, auto, auto, auto;
+
+    color: var(--fso-text);
 
     font-family:
-      "SFMono-Regular",
-      Consolas,
-      "Liberation Mono",
-      Menlo,
-      monospace;
+      "Geist",
+      Inter,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
   }
 
   .container {
-    width: min(1100px, calc(100% - 48px));
+    width: min(1180px, calc(100% - 48px));
     margin: 0 auto;
   }
 
   .page {
     min-height: 100vh;
-    padding: 140px 0 100px;
+    padding: 148px 0 110px;
   }
 
   .page-command {
     margin: 0 0 18px;
 
-    color: #36d399;
+    width: fit-content;
+    padding: 7px 11px;
+    border: 1px solid rgba(96, 165, 250, 0.18);
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.62);
+    color: var(--fso-cyan);
+
+    font-family: "Geist Mono", monospace;
 
     font-size: 15px;
   }
@@ -97,11 +123,18 @@ const canonical = new URL(
   .page h1 {
     margin: 0;
 
-    color: #e7ebec;
+    max-width: 900px;
+    color: transparent;
+    background: linear-gradient(105deg, #f8fafc 5%, #bfdbfe 48%, #c4b5fd 96%);
+    background-clip: text;
+    -webkit-background-clip: text;
 
-    font-size: clamp(42px, 6vw, 64px);
+    font-size: clamp(44px, 6vw, 68px);
+    font-family: "Geist", sans-serif;
+    font-weight: 700;
 
-    letter-spacing: -2px;
+    line-height: 1.02;
+    letter-spacing: -0.05em;
   }
 
   .page-description {
@@ -109,10 +142,10 @@ const canonical = new URL(
 
     margin: 22px 0 0;
 
-    color: #7f898c;
+    color: var(--fso-muted);
 
     font-family:
-      Inter,
+      "Geist",
       -apple-system,
       BlinkMacSystemFont,
       "Segoe UI",
@@ -130,6 +163,15 @@ const canonical = new URL(
 
     .page {
       padding: 120px 0 80px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
     }
   }
 </style>

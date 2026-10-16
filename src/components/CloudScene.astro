@@ -1,0 +1,359 @@
+---
+const base = import.meta.env.BASE_URL;
+import HologramIcon from "./HologramIcon.astro";
+---
+
+<div class="cloud-scene" data-cloud-scene aria-label="Animated three-dimensional DevOps cloud ecosystem">
+  <canvas class="network-field" data-network-field aria-hidden="true"></canvas>
+  <div class="scene-grid" aria-hidden="true"></div>
+  <div class="scene-aura" aria-hidden="true"></div>
+
+  <div class="orbit orbit--one" aria-hidden="true"><i></i><i></i></div>
+  <div class="orbit orbit--two" aria-hidden="true"><i></i><i></i></div>
+  <div class="orbit orbit--three" aria-hidden="true"><i></i></div>
+
+  <div class="globe-shell" aria-hidden="true">
+    <img src={`${base}images/fso-hologram-globe-original.png`} alt="" />
+    <div class="globe-scan"></div>
+  </div>
+
+  <div class="cloud-node cloud-node--aws" aria-hidden="true">
+    <div class="node-icon"><HologramIcon kind="aws" /></div>
+    <span>AWS</span><small>cloud core</small>
+  </div>
+  <div class="cloud-node cloud-node--k8s" aria-hidden="true">
+    <div class="node-icon"><HologramIcon kind="kubernetes" /></div>
+    <span>K8s</span><small>orchestration</small>
+  </div>
+  <div class="cloud-node cloud-node--obs" aria-hidden="true">
+    <div class="node-icon"><HologramIcon kind="docker" /></div>
+    <span>Docker</span><small>containers</small>
+  </div>
+
+  <div class="service-chip service-chip--iac" aria-hidden="true"><div class="chip-icon"><HologramIcon kind="terraform" /></div><span>Terraform</span></div>
+  <div class="service-chip service-chip--gitops" aria-hidden="true"><div class="chip-icon"><HologramIcon kind="gitops" /></div><span>GitOps</span></div>
+  <div class="service-chip service-chip--sre" aria-hidden="true"><div class="chip-icon"><HologramIcon kind="sre" /></div><span>SRE</span></div>
+
+  <div class="data-rail" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <div class="scene-vignette" aria-hidden="true"></div>
+
+  <div class="scene-status" aria-hidden="true">
+    <span><i></i> cloud systems online</span>
+    <span>original realtime render · fso</span>
+  </div>
+</div>
+
+<script>
+  type Particle = {
+    x: number;
+    y: number;
+    radius: number;
+    speed: number;
+    phase: number;
+    color: string;
+  };
+
+  const initializeScene = (host: HTMLElement) => {
+    const canvas = host.querySelector<HTMLCanvasElement>("[data-network-field]");
+    if (!canvas || host.dataset.initialized === "true") return;
+    host.dataset.initialized = "true";
+
+    const context = canvas.getContext("2d");
+    if (!context) return;
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let width = 0;
+    let height = 0;
+    let scale = 1;
+    let particles: Particle[] = [];
+    let frame = 0;
+    let start = performance.now();
+
+    const createParticles = () => {
+      const count = Math.max(28, Math.floor((width * height) / 10500));
+      const palette = ["96,165,250", "34,211,238", "167,139,250"];
+      particles = Array.from({ length: count }, (_, index) => ({
+        x: ((index * 83) % 997) / 997 * width,
+        y: ((index * 47) % 991) / 991 * height,
+        radius: 0.55 + (index % 4) * 0.28,
+        speed: 0.025 + (index % 7) * 0.008,
+        phase: index * 0.71,
+        color: palette[index % palette.length],
+      }));
+    };
+
+    const resize = () => {
+      const bounds = host.getBoundingClientRect();
+      width = Math.max(1, bounds.width);
+      height = Math.max(1, bounds.height);
+      scale = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.round(width * scale);
+      canvas.height = Math.round(height * scale);
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      context.setTransform(scale, 0, 0, scale, 0, 0);
+      createParticles();
+    };
+
+    const drawPath = (
+      time: number,
+      startX: number,
+      startY: number,
+      controlX: number,
+      controlY: number,
+      endX: number,
+      endY: number,
+      offset: number,
+      color: string,
+    ) => {
+      context.beginPath();
+      context.moveTo(startX, startY);
+      context.quadraticCurveTo(controlX, controlY, endX, endY);
+      context.strokeStyle = `rgba(${color}, 0.18)`;
+      context.lineWidth = 1;
+      context.setLineDash([4, 8]);
+      context.lineDashOffset = -time * 0.025 - offset;
+      context.stroke();
+      context.setLineDash([]);
+
+      const progress = ((time * 0.000075) + offset * 0.008) % 1;
+      const inverse = 1 - progress;
+      const x = inverse * inverse * startX + 2 * inverse * progress * controlX + progress * progress * endX;
+      const y = inverse * inverse * startY + 2 * inverse * progress * controlY + progress * progress * endY;
+      const glow = context.createRadialGradient(x, y, 0, x, y, 9);
+      glow.addColorStop(0, `rgba(${color}, 0.95)`);
+      glow.addColorStop(1, `rgba(${color}, 0)`);
+      context.fillStyle = glow;
+      context.beginPath();
+      context.arc(x, y, 9, 0, Math.PI * 2);
+      context.fill();
+      context.fillStyle = `rgba(${color}, 1)`;
+      context.beginPath();
+      context.arc(x, y, 1.8, 0, Math.PI * 2);
+      context.fill();
+    };
+
+    const render = (now: number) => {
+      const time = now - start;
+      context.clearRect(0, 0, width, height);
+
+      particles.forEach((particle) => {
+        const drift = reducedMotion.matches ? 0 : Math.sin(time * particle.speed * 0.001 + particle.phase) * 9;
+        const opacity = 0.16 + (Math.sin(time * 0.0015 + particle.phase) + 1) * 0.17;
+        context.fillStyle = `rgba(${particle.color}, ${opacity})`;
+        context.beginPath();
+        context.arc(particle.x + drift * 0.35, particle.y + drift, particle.radius, 0, Math.PI * 2);
+        context.fill();
+      });
+
+      const centerX = width * 0.52;
+      const centerY = height * 0.53;
+      drawPath(time, width * 0.15, height * 0.25, width * 0.32, height * 0.34, centerX, centerY, 11, "34,211,238");
+      drawPath(time, width * 0.85, height * 0.27, width * 0.7, height * 0.34, centerX, centerY, 47, "167,139,250");
+      drawPath(time, width * 0.16, height * 0.72, width * 0.33, height * 0.64, centerX, centerY, 83, "96,165,250");
+      drawPath(time, width * 0.84, height * 0.73, width * 0.71, height * 0.63, centerX, centerY, 121, "34,211,238");
+
+      if (!reducedMotion.matches) frame = requestAnimationFrame(render);
+    };
+
+    const syncMotion = () => {
+      cancelAnimationFrame(frame);
+      start = performance.now();
+      render(start);
+    };
+
+    const observer = new ResizeObserver(resize);
+    observer.observe(host);
+    resize();
+    syncMotion();
+    reducedMotion.addEventListener("change", syncMotion);
+
+    document.addEventListener("astro:before-swap", () => {
+      cancelAnimationFrame(frame);
+      observer.disconnect();
+      reducedMotion.removeEventListener("change", syncMotion);
+    }, { once: true });
+  };
+
+  document.querySelectorAll<HTMLElement>("[data-cloud-scene]").forEach(initializeScene);
+</script>
+
+<style>
+  .cloud-scene {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    isolation: isolate;
+    background:
+      radial-gradient(circle at 52% 50%, rgba(19, 72, 153, 0.22), transparent 29%),
+      radial-gradient(circle at 76% 66%, rgba(88, 28, 135, 0.16), transparent 34%),
+      linear-gradient(145deg, #020715, #030918 54%, #08051a);
+  }
+
+  .network-field,
+  .scene-grid,
+  .scene-aura,
+  .scene-vignette { position: absolute; inset: 0; }
+
+  .network-field { z-index: 2; }
+
+  .scene-grid {
+    z-index: 1;
+    opacity: 0.12;
+    background-image:
+      linear-gradient(rgba(56, 189, 248, 0.22) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(56, 189, 248, 0.22) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: radial-gradient(circle at center, black, transparent 76%);
+    transform: perspective(430px) rotateX(63deg) translateY(43%);
+    transform-origin: center bottom;
+    animation: grid-travel 9s linear infinite;
+  }
+
+  .scene-aura {
+    z-index: 1;
+    left: 50%;
+    top: 51%;
+    width: 56%;
+    height: 74%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(34, 211, 238, 0.16), rgba(59, 130, 246, 0.04) 45%, transparent 70%);
+    filter: blur(14px);
+    transform: translate(-50%, -50%);
+    animation: aura-breathe 5s ease-in-out infinite;
+  }
+
+  .globe-shell {
+    position: absolute;
+    z-index: 5;
+    left: 50%;
+    top: 50%;
+    width: min(75%, 530px);
+    aspect-ratio: 3 / 2;
+    transform: translate(-50%, -48%);
+    transform-style: preserve-3d;
+    animation: globe-float 6s ease-in-out infinite;
+  }
+
+  .globe-shell img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    filter: saturate(1.08) contrast(1.04) drop-shadow(0 0 24px rgba(34, 211, 238, 0.18));
+    animation: globe-yaw 12s ease-in-out infinite;
+  }
+
+  .globe-scan {
+    position: absolute;
+    left: 19%;
+    right: 19%;
+    top: 14%;
+    height: 2px;
+    opacity: 0.72;
+    background: linear-gradient(90deg, transparent, #67e8f9, #a78bfa, transparent);
+    box-shadow: 0 0 16px rgba(103, 232, 249, 0.75);
+    animation: globe-scan 4.8s ease-in-out infinite;
+  }
+
+  .orbit {
+    position: absolute;
+    z-index: 4;
+    left: 50%;
+    top: 49%;
+    border: 1px solid rgba(96, 165, 250, 0.28);
+    border-radius: 50%;
+    transform-style: preserve-3d;
+  }
+
+  .orbit--one { width: 69%; height: 34%; transform: translate(-50%, -50%) rotate(-9deg); animation: orbit-one 14s linear infinite; }
+  .orbit--two { width: 64%; height: 40%; border-color: rgba(167, 139, 250, 0.25); transform: translate(-50%, -50%) rotate(17deg); animation: orbit-two 18s linear infinite reverse; }
+  .orbit--three { width: 47%; height: 62%; border-color: rgba(34, 211, 238, 0.2); transform: translate(-50%, -50%) rotate(68deg); animation: orbit-three 20s linear infinite; }
+
+  .orbit i { position: absolute; width: 7px; height: 7px; border-radius: 50%; background: #67e8f9; box-shadow: 0 0 14px #22d3ee; }
+  .orbit i:first-child { left: 13%; top: 13%; }
+  .orbit i:nth-child(2) { right: 8%; bottom: 18%; background: #a78bfa; box-shadow: 0 0 14px #8b5cf6; }
+
+  .cloud-node {
+    position: absolute;
+    z-index: 7;
+    min-width: 82px;
+    display: grid;
+    justify-items: center;
+    color: #dbeafe;
+    font-family: "Geist Mono", monospace;
+    text-align: center;
+    filter: drop-shadow(0 0 14px rgba(34, 211, 238, 0.16));
+  }
+
+  .cloud-node--aws { left: 9%; top: 19%; animation: node-float 5.4s ease-in-out infinite; }
+  .cloud-node--k8s { right: 8%; top: 21%; animation: node-float 6.2s ease-in-out -2s infinite; }
+  .cloud-node--obs { left: 11%; bottom: 18%; animation: node-float 5.8s ease-in-out -3s infinite; }
+
+  .node-icon {
+    width: 76px;
+    height: 65px;
+    margin-bottom: 7px;
+    transform: perspective(280px) rotateY(-12deg);
+  }
+
+  .cloud-node span { color: #7dd3fc; font-size: 9px; font-weight: 700; letter-spacing: 0.08em; }
+  .cloud-node small { margin-top: 3px; color: #52617a; font-size: 6px; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  .service-chip {
+    position: absolute;
+    z-index: 8;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 3px;
+    padding: 0;
+    border: 0;
+    border-radius: 7px;
+    color: #8ca2c1;
+    background: transparent;
+    font: 600 7px/1 "Geist Mono", monospace;
+    letter-spacing: 0.04em;
+  }
+
+  .chip-icon { width: 45px; height: 40px; transform: perspective(200px) rotateY(12deg); }
+  .service-chip--iac { right: 11%; bottom: 18%; animation: chip-float 7s ease-in-out infinite; }
+  .service-chip--gitops { right: 4%; top: 48%; animation: chip-float 6.4s ease-in-out -2s infinite; }
+  .service-chip--sre { left: 4%; top: 48%; animation: chip-float 6s ease-in-out -3s infinite; }
+
+  .data-rail { position: absolute; z-index: 6; left: 28%; right: 28%; bottom: 15%; height: 2px; overflow: hidden; background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.35), transparent); }
+  .data-rail i { position: absolute; top: 0; width: 18px; height: 2px; background: #67e8f9; box-shadow: 0 0 10px #22d3ee; animation: rail-packet 3.8s linear infinite; }
+  .data-rail i:nth-child(2) { animation-delay: -0.9s; }
+  .data-rail i:nth-child(3) { animation-delay: -1.8s; }
+  .data-rail i:nth-child(4) { animation-delay: -2.7s; }
+
+  .scene-vignette { z-index: 10; pointer-events: none; box-shadow: inset 0 0 70px 18px rgba(2, 6, 23, 0.7); background: linear-gradient(to bottom, rgba(2, 6, 23, 0.08), transparent 25%, transparent 76%, rgba(2, 6, 23, 0.55)); }
+
+  .scene-status { position: absolute; z-index: 11; left: 18px; right: 18px; bottom: 12px; display: flex; justify-content: space-between; color: rgba(148, 163, 184, 0.58); font: 600 7px/1 "Geist Mono", monospace; letter-spacing: 0.1em; text-transform: uppercase; }
+  .scene-status span:first-child { color: #bae6fd; }
+  .scene-status i { width: 5px; height: 5px; display: inline-block; margin-right: 7px; border-radius: 50%; background: #34d399; box-shadow: 0 0 10px rgba(52, 211, 153, 0.8); animation: status-pulse 1.8s ease-in-out infinite; }
+
+  @keyframes globe-float { 0%, 100% { transform: translate(-50%, -48%) translateY(0); } 50% { transform: translate(-50%, -48%) translateY(-7px); } }
+  @keyframes globe-yaw { 0%, 100% { transform: perspective(850px) rotateY(-4deg) scale(1); } 50% { transform: perspective(850px) rotateY(5deg) scale(1.015); } }
+  @keyframes globe-scan { 0%, 100% { top: 18%; opacity: 0; } 12%, 85% { opacity: 0.75; } 50% { top: 65%; } }
+  @keyframes node-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+  @keyframes chip-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+  @keyframes orbit-one { to { transform: translate(-50%, -50%) rotate(351deg); } }
+  @keyframes orbit-two { to { transform: translate(-50%, -50%) rotate(377deg); } }
+  @keyframes orbit-three { to { transform: translate(-50%, -50%) rotate(428deg); } }
+  @keyframes grid-travel { to { background-position: 0 42px, 42px 0; } }
+  @keyframes aura-breathe { 0%, 100% { opacity: 0.55; transform: translate(-50%, -50%) scale(0.92); } 50% { opacity: 1; transform: translate(-50%, -50%) scale(1.08); } }
+  @keyframes rail-packet { from { left: -22px; } to { left: calc(100% + 22px); } }
+  @keyframes status-pulse { 0%, 100% { opacity: 0.45; } 50% { opacity: 1; } }
+
+  @media (max-width: 700px) {
+    .cloud-node--obs, .service-chip--sre { display: none; }
+    .globe-shell { width: 82%; }
+    .orbit--one { width: 78%; }
+    .orbit--two { width: 73%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scene-grid, .scene-aura, .globe-shell, .globe-shell img, .globe-scan, .orbit, .cloud-node, .service-chip, .data-rail i, .scene-status i { animation: none !important; }
+  }
+</style>
