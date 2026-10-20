@@ -3555,39 +3555,233 @@ const base = import.meta.env.BASE_URL;
 
   @media (max-width: 700px) {
     .container { width: min(100% - 32px, 1180px); }
-    .hero { padding: 112px 0 64px; }
-    .hero h1 { font-size: clamp(43px, 14vw, 60px); }
-    .hero .bio { font-size: 15px; }
-    .eyebrow { max-width: 100%; font-size: 8px; letter-spacing: 0.08em; }
-    .hero-actions { flex-direction: column; }
-    .hero-actions a { width: 100%; }
-    .hero-links { justify-content: center; }
-    .hero-visual { min-height: 460px; }
+    .hero {
+      min-height: auto;
+      overflow: clip;
+      padding: 104px 0 52px;
+    }
+
+    .hero-ambient { overflow: hidden; }
+
+    .hero-layout,
+    .hero-copy,
+    .hero-visual {
+      width: 100%;
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    .hero-layout { gap: 32px; }
+
+    .hero-copy { overflow: visible; }
+
+    .eyebrow {
+      max-width: 100%;
+      margin-bottom: 24px;
+      padding: 7px 10px;
+      font-size: 7.5px;
+      letter-spacing: 0.065em;
+      white-space: nowrap;
+    }
+
+    .hero-command {
+      margin-bottom: 12px;
+      font-size: 12px;
+    }
+
+    .hero h1 {
+      max-width: 100%;
+      font-size: clamp(41px, 13vw, 54px);
+      line-height: 1;
+      letter-spacing: -0.05em;
+    }
+
+    .hero .role {
+      margin-top: 22px;
+      font-size: clamp(18px, 5.2vw, 21px);
+      line-height: 1.28;
+    }
+
+    .hero .bio {
+      max-width: 100%;
+      margin-top: 18px;
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .hero-actions {
+      width: 100%;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      gap: 10px;
+      margin-top: 27px;
+    }
+
+    .hero-actions a {
+      width: 100%;
+      min-width: 0;
+      min-height: 50px;
+      padding-inline: 16px;
+    }
+
+    .hero-links {
+      width: 100%;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 12px 18px;
+      margin-top: 21px;
+    }
+
+    .hero-visual {
+      min-height: 0;
+      margin: 0 auto;
+    }
+
     .ring-one { width: 340px; height: 340px; }
     .ring-two { width: 270px; height: 270px; }
     .signal-card { display: none; }
-    .motion-frame { inset: 0 0 48px; }
-    .motion-stage { min-height: 330px; }
+
+    .motion-frame {
+      inset: auto;
+      width: 100%;
+      max-width: 100%;
+      border-radius: 16px;
+    }
+
+    .motion-topbar {
+      height: 42px;
+      padding-inline: 13px;
+    }
+
+    .motion-title {
+      margin-left: 12px;
+      font-size: 8px;
+    }
+
+    .motion-stage {
+      width: 100%;
+      min-height: 0;
+      aspect-ratio: 4 / 3;
+    }
+
+    .motion-footer {
+      min-height: 40px;
+      padding-inline: 13px;
+    }
+
     .motion-footer div span { display: none; }
     .telemetry { display: none; }
     .hero .terminal-window { display: none; }
-    .consulting-pill { align-self: center; left: auto; bottom: auto; margin: 10px 0 0; transform: none; white-space: nowrap; }
+
+    .consulting-pill {
+      left: auto;
+      bottom: auto;
+      align-self: center;
+      max-width: 100%;
+      margin: 12px 0 0;
+      transform: none;
+      white-space: nowrap;
+    }
+
     .consulting-pill:hover { transform: translateY(-3px); }
+
     .skills-grid { grid-template-columns: 1fr; gap: 12px; }
-    .skill-card { min-height: 235px; padding: 20px; }
+
+    .skill-card {
+      min-height: 0;
+      padding: 19px;
+    }
+
+    .skill-card h3 { margin-top: 18px; }
+    .skill-tags { margin-top: 17px; }
     .skill-card h3 { font-size: 17px; }
+
+    .featured-project-card { padding: 21px; }
+    .featured-project-meta { flex-wrap: wrap; }
+    .featured-project-card h3 { margin-top: 20px; font-size: 20px; }
+
     .certifications-grid { grid-template-columns: 1fr; gap: 12px; }
-    .cert-card { min-height: 210px; padding: 18px; }
+
+    .cert-card {
+      min-height: 0;
+      grid-template-columns: 52px minmax(0, 1fr);
+      padding: 18px;
+    }
+
+    .cert-content h3 { min-height: 0; }
+
     .contact-window-bar { grid-template-columns: 1fr auto; }
     .contact-window-bar > span:nth-child(2) { display: none; }
-    .contact-layout { padding: 28px 20px; }
-    .contact-copy h3 { font-size: 32px; }
+
+    .contact-block { border-radius: 16px; }
+
+    .contact-window-bar {
+      min-height: 48px;
+      padding-inline: 14px;
+    }
+
+    .contact-layout {
+      gap: 28px;
+      padding: 25px 17px;
+    }
+
+    .contact-copy h3 { font-size: clamp(27px, 8vw, 32px); }
+    .contact-text { font-size: 14px; line-height: 1.65; }
+    .contact-email a { max-width: 100%; overflow-wrap: anywhere; font-size: 11.5px; }
+
     .contact-links { grid-template-columns: 1fr; gap: 8px; }
-    .contact-links a { width: 100%; padding: 10px 12px; }
+    .contact-links a { width: 100%; min-height: 58px; padding: 9px 11px; }
+
     .stack-command { margin-left: 0; }
     .tech-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .tech-group { padding: 18px; }
-    .section { padding: 68px 0; }
+
+    .tech-group { padding: 15px; }
+    .tech-group-title { margin-bottom: 15px; }
+
+    .tech-card,
+    .additional-stack .tech-card {
+      min-width: 0;
+      padding: 10px;
+    }
+
+    .tech-card img,
+    .tech-card img.aws-icon {
+      width: 42px;
+      height: 42px;
+      padding: 8px;
+    }
+
+    .tech-card::before { left: 62px; }
+    .tech-card::after { left: 73px; }
+
+    .section { padding: 56px 0; }
+    .section-title h2 { font-size: clamp(27px, 8vw, 32px); }
+    .section-title::before { width: 22px; }
+    .core-skills-intro,
+    .section-intro,
+    .certifications-intro { font-size: 14.5px; line-height: 1.65; }
+  }
+
+  @media (max-width: 360px) {
+    .container { width: min(100% - 24px, 1180px); }
+    .eyebrow { font-size: 7px; letter-spacing: 0.035em; }
+    .hero h1 { font-size: clamp(38px, 12.8vw, 46px); }
+    .hero-links { gap-inline: 12px; }
+    .tech-grid { grid-template-columns: 1fr; }
+    .tech-card span { white-space: normal; }
+    .contact-availability { font-size: 8px; }
+  }
+
+  @media (hover: none) and (pointer: coarse) {
+    .skill-card:hover,
+    .featured-project-card:hover,
+    .tech-card:hover,
+    .cert-card:hover,
+    .contact-links a:hover,
+    .hero-actions a:hover,
+    .consulting-pill:hover {
+      transform: none;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {

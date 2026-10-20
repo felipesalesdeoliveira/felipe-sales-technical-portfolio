@@ -347,10 +347,39 @@ import HologramIcon from "./HologramIcon.astro";
   @keyframes status-pulse { 0%, 100% { opacity: 0.45; } 50% { opacity: 1; } }
 
   @media (max-width: 700px) {
-    .cloud-node--obs, .service-chip--sre { display: none; }
-    .globe-shell { width: 82%; }
-    .orbit--one { width: 78%; }
-    .orbit--two { width: 73%; }
+    .cloud-node--obs,
+    .service-chip--sre { display: none; }
+
+    .globe-shell {
+      top: 51%;
+      width: 92%;
+    }
+
+    .orbit--one { width: 86%; height: 31%; }
+    .orbit--two { width: 81%; height: 38%; }
+    .orbit--three { width: 54%; height: 68%; }
+
+    .cloud-node { min-width: 60px; }
+    .cloud-node--aws { left: 2%; top: 14%; }
+    .cloud-node--k8s { right: 1%; top: 16%; }
+
+    .node-icon {
+      width: 58px;
+      height: 50px;
+      margin-bottom: 4px;
+    }
+
+    .service-chip--iac { right: 4%; bottom: 15%; }
+    .service-chip--gitops { right: 1%; top: 51%; }
+    .chip-icon { width: 36px; height: 32px; }
+
+    .scene-status {
+      left: 12px;
+      right: 12px;
+      bottom: 9px;
+    }
+
+    .scene-status span:last-child { display: none; }
   }
 
   @media (prefers-reduced-motion: reduce) {
